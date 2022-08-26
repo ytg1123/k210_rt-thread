@@ -2,18 +2,11 @@ h1. k210版Rt-Threadのビルド手順
 
 <pre>
 ■ rt-thread git ソース入手先
-※ PATH　http://157.7.129.177:11080/taga/rt-thread
-　これはK210以外のBSPも全部含まれてる、K210のBSPは少し古くメンテは途中でやめています。
-　K210系は以下のソースに別途、メンテしてますのでそっちを参照ください
-
-※ K210の瑞起公式GITHUB社内サイトは以下です
-※ PATH　http://157.7.129.177:11080/taga/k210-rt-thread
+※ PATH　https://github.com/ytg1123/k210_rt-thread  
 
 $ cd $HOME
-$ git clone git@gitlab.vividnode.com:taga/k210-rt-thread.git
-又は
-$ git clone git@157.7.129.177:taga/k210-rt-thread.git
-$ cd k210-rt-thread
+$ git clone https://github.com/ytg1123/k210_rt-thread.git 
+$ cd k210_rt-thread
 
 ■ Kendryte-gccのdownloadと設定（Kendryte-gcc公開サイト版）
 $ cd $HOME
