@@ -104,6 +104,15 @@ void OV5640_Exposure(uint8_t exposure)
         ov5640_wr_reg(0x3212,0xa3); //launch group 3
 }
 
+const static uint8_t OV5640_LIGHTMODE_TBL_TST[5][7]=
+{
+        0x04,0X00,0X04,0X00,0X04,0X00,0X01,//Manual
+        0x06,0X1C,0X04,0X00,0X04,0XF3,0X01,//Sunny
+        0x05,0X48,0X04,0X00,0X07,0XCF,0X01,//Office
+        0x06,0X48,0X04,0X00,0X04,0XD3,0X01,//Cloudy
+        0x04,0X10,0X04,0X00,0X08,0X40,0X01,//Home
+};
+
 const static uint8_t OV5640_LIGHTMODE_TBL[5][7]=
 {
 	0x04,0X00,0X04,0X00,0X04,0X00,0X00,//Auto
@@ -124,6 +133,7 @@ void OV5640_Light_Mode(uint8_t mode)
 	uint8_t i;
 	ov5640_wr_reg(0x3212,0x03);	//start group 3
 	for(i=0;i<7;i++)ov5640_wr_reg(0x3400+i,OV5640_LIGHTMODE_TBL[mode][i]);
+	//for(i=0;i<7;i++)ov5640_wr_reg(0x3400+i,OV5640_LIGHTMODE_TBL_TST[mode][i]);
 	ov5640_wr_reg(0x3212,0x13); //end group 3
 	ov5640_wr_reg(0x3212,0xa3); //launch group 3
 }

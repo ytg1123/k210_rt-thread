@@ -17,6 +17,7 @@
 #define FALSE   0
 #endif
 
+
 /* 使うカメラの選択 */
 #if   defined(CAM_USING_OV2640)
 #include "drv_ov2640.h"
@@ -40,6 +41,8 @@
 #include "dmac.h"
 #include "region_layer.h"
 #include "fft_soft.h"
+
+typedef uint8_t BYTE;
 
 /* 日本語フォントファイル切り替え */
 #ifndef _FONT_JP_KANA
@@ -100,7 +103,10 @@ uint32_t g_lcd_gram0[GRAM_SIZE] __attribute__((aligned(64)));
 uint32_t g_lcd_gram1[GRAM_SIZE] __attribute__((aligned(64)));
 
 float    hard_power[FFT_N];
+int      i_power[FFT_N];
 float    soft_power[FFT_N];
+int16_t  fft_hpower[FFT_N];
+int16_t  fft_spower[FFT_N];
 uint64_t fft_out_data[FFT_N / 2];
 uint64_t buffer_input[FFT_N];
 uint64_t buffer_output[FFT_N];
@@ -113,7 +119,6 @@ static volatile uint32_t g_ai_done_flag;
 static volatile uint8_t g_dvp_finish_flag;
 static volatile uint8_t g_fft_finish_flag;
 static volatile uint8_t g_ram_mux = FALSE;
-
 
 /* KPU学習済みモデルデータサイズ定義*/
 #define KMODEL_SIZE (3104 * 1024)
@@ -143,8 +148,55 @@ static float layer0_anchor[ANCHOR_NUM * 2]= {
     169. / 224. * 7, 344. / 320. * 10, 319. / 224. * 7,
 };
 
+static int RGB565Tab5[32] = {
+    0, 8, 16, 25, 33, 41, 49, 58, 66, 74, 82, 90, 99, 107, 115, 123,
+    132, 140, 148, 156, 165, 173, 181, 189, 197, 206, 214, 222, 230, 239, 247, 255
+};
 
-/* g_ai_bufからのカメラ映像を取り込む*/
+static int RGB565Tab6[64] = {
+    0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81,
+    85, 89, 93, 97, 101, 105, 109, 113, 117, 121, 125, 130, 134, 138, 142, 146, 150,
+    154, 158, 162, 166, 170, 174, 178, 182, 186, 190, 194, 198, 202, 206, 210, 215,
+    219, 223, 227, 231, 235, 239, 243, 247, 251, 255
+};
+
+#define IMABS(a)     (float){ ( sqrt( (a).real * (a).real + (a).imag * (a).imag ) )  }
+
+void interchange_fft( int16_t *d, int lx ) {
+int  x,y,ly=lx,hlx=lx/2,hly=ly/2 ;
+int16_t t;
+
+    for( x=0; x<hlx; x++ ){
+        t = d[x]; d[x] = d[hlx +x]; d[hlx +x] = t;
+    }
+    //for( y=hly; y<ly; y++ ){
+    //    d[y]=0; 
+    //}
+}
+
+/* RGB565を8Bitモノクロ値に変換*/
+#define MAX_LV        255
+int16_t rgb5652gray(uint16_t rgb565 ){
+BYTE rgbRed,rgbGreen,rgbBlue;
+float r,g,b;
+float fgray;
+BYTE gray;
+    rgbRed   = RGB565Tab5[(rgb565 & 0xF800) >> 11];
+    rgbGreen = RGB565Tab6[(rgb565 & 0x07E0) >> 5];
+    rgbBlue  = RGB565Tab5[(rgb565 & 0x001F)];
+    r = rgbRed;
+    g = rgbGreen;
+    b = rgbBlue;
+    fgray = r*0.299+g*0.587+b*0.144;
+    gray = rint(fgray);
+    if(KPU3FFT_DEBUG) printf("rgb5652gray:r=%f g=%f b=%f r=[%d] g=[%d] b=[%d] gray=[%d]\n",r,g,b,rgbRed,rgbGreen,rgbBlue,gray);
+    if ( gray > MAX_LV ) gray = MAX_LV;
+
+    return gray ;
+}
+
+
+/* g_ai_bufからのカメラ映像をRGB565形式で取り込む*/
 static void cp_image_for_ai_buff_top16(uint32_t *ptr){
 int i,j;
 uint16_t dl,dh,d1,d2,d3;
@@ -185,8 +237,6 @@ int i,j;
 uint32_t d;
 uint16_t dh,dl;
 uint16_t rgbh,rgbl;
-//uint8_t rh,gh,bh;
-//uint8_t rl,gl,bl;
 float rh,gh,bh;
 float rl,gl,bl;
 float vh,vl;
@@ -241,6 +291,7 @@ float vh,vl;
 
 }
 
+/* トップ位置16行より最終行まではカメラ画像をそのまま使う*/
 static void cp_image_for_lcd_buff_outside_of_top16(uint32_t *ptr){
 int i,j;
 uint32_t d;
@@ -251,7 +302,7 @@ uint16_t rgbh,rgbl;
 float rh,gh,bh;
 float rl,gl,bl;
 float vh,vl;
-    /* トップ位置16行より最終行まではカメラ画像をそのまま使う*/
+
     for(i=OV_TOP16;i<G_AI_LAST ;i++){
         for(j=0;j<G_AI_WIDTH/2 ;j++){
          d = g_ram_mux ? g_lcd_gram1[(i)*G_AI_WIDTH/2 + j ] :  g_lcd_gram0[(i)*G_AI_WIDTH/2 + j ];
@@ -261,7 +312,7 @@ float vh,vl;
 
 }
 
-
+/* トップ位置から先頭16行までカメラ画像を取り込む*/
 /* g_lcd_gramからのカメラ映像を取り込む*/
 /* g_lcd_gram : 画像フォーマットはRGB565の16Bit形式*/
 /* */
@@ -269,56 +320,75 @@ static void cp_image_for_lcd_buff_top16(uint32_t *ptr){
 int i,j;
 uint32_t d;
 uint16_t dh,dl;
+uint16_t hh,hl;
 uint16_t rgbh,rgbl;
-//uint8_t rh,gh,bh;
-//uint8_t rl,gl,bl;
 float rh,gh,bh;
 float rl,gl,bl;
 float vh,vl;
 
     /* トップ位置から16行目まではカメラ画像をモノクロ16ビット化する*/
+         if(KPU3FFT_DEBUG) printf("cp_image_for_lcd_buff_top16: start \n" );
     for(i=0;i<OV_TOP16 ;i++){
         for(j=0;j<G_AI_WIDTH/2 ;j++){
          d = g_ram_mux ? g_lcd_gram1[(i)*G_AI_WIDTH/2 + j ] :  g_lcd_gram0[(i)*G_AI_WIDTH/2 + j ];
-         //d = g_lcd_gram[(i)*G_AI_WIDTH/2 + j ];
          dh = (d>>16)&0xffff;
          dl = (d)&0xffff;
 
-         /* RGB各色を合計してモノクロ16ビットにする*/
-         rh = (dh>>11)&0x1f;
+         /* High RGB各色を合計してモノクロ16ビットにする*/
          /* Gは5bit化する*/
-         gh = (dh>>6 )&0x1f;
-         bh = (dh    )&0x1f;
-         /* カラーをモノクロ化する*/
-         vh = 0.3*rh + 0.6*gh + 0.1*bh;
-         rgbh = vh;
+         //rh = (dh>>11)&0x1f;
+         //gh = (dh>>6 )&0x1f;
+         //bh = (dh    )&0x1f;
+         rh   = RGB565Tab5[(dh & 0xF800) >> 11];
+         gh   = RGB565Tab6[(dh & 0x07E0) >> 5];
+         bh   = RGB565Tab5[(dh & 0x001F)];
 
-         /* 小さい値は足切り*/
-         //if(rgbh<0x10)rgbh=0;
+         /* カラーをモノクロ化する*/
+         vh  = rh*0.299+gh*0.587+bh*0.144;
+         rgbh = rint(vh);
 
          /* 値が8bitなので16bit化する*/
-         dh = rgbh<<11;
+         //rgbh *= 256;
+         hh = rgbh ;
 
-         /* RGB各色を合計してモノクロ16ビットにする*/
-         rl = (dl>>11)&0x1f;
-         /* Gは5bit化する*/
-         gl = (dl>>6 )&0x1f;
-         bl = (dl    )&0x1f;
-         /* カラーをモノクロ化する*/
-         vl = 0.3*rl + 0.6*gl + 0.1*bl;
-         rgbl = vl;
-
+         /* 値調整*/
          /* 小さい値は足切り*/
-         //if(rgbl<0x10)rgbl=0;
+#if 0
+         if(hh<0x1000)hh=0;
+         else if(hh>=0x1000)hh=0x8000;
+#endif
+
+         /* Low RGB各色を合計してモノクロ16ビットにする*/
+         /* Gは5bit化する*/
+         //rl = (dl>>11)&0x1f;
+         //gl = (dl>>6 )&0x1f;
+         //bl = (dl    )&0x1f;
+         rl   = RGB565Tab5[(dl & 0xF800) >> 11];
+         gl   = RGB565Tab6[(dl & 0x07E0) >> 5];
+         bl   = RGB565Tab5[(dl & 0x001F)];
+
+         /* カラーをモノクロ化する*/
+         vl  = rl*0.299+gl*0.587+bl*0.144;
+         rgbl = rint(vl);
 
          /* 値が8bitなので16bit化する*/
-         dl = rgbl<<11;
+         //rgbl *= 256;
+         hl = rgbl ;
 
-         if(KPU3FFT_DEBUG) rt_kprintf("cp_image lcdbuff:HIGHT=[%d] WIDTH=[%d] rgbh=[%x] rgbl=[%x] dh=[%x] dl=[%x] \n",i,j,rgbh,rgbl,dh,dl );
+         /* 値調整*/
+         /* 小さい値は足切り*/
+#if 0
+         if(hl<0x1000)hl=0;
+         else if(hl>=0x1000)hl=0x8000;
+#endif
 
-         d = (dh<<16)&0xffff0000 | (dl&0xffff);
+         if(KPU3FFT_DEBUG) printf("cp_image_for_lcd_buff_top16:HIGHT=[%d] WIDTH=[%d] dh=[%d] dl=[%d] hh=[%d] hl=[%d] \n",i,j,dh,dl,hh,hl );
+         if(KPU3FFT_DEBUG) printf("%d\n%d\n",hh,hl);
+
+         d = (hh<<16)&0xffff0000 | (hl&0xffff);
          ptr[(i)*G_AI_WIDTH/2 + j] = d;
         }
+         if(KPU3FFT_DEBUG) printf("cp_image_for_lcd_buff_top16: end \n" );
     } /* for(i=0;i<OV_TOP16 ;i++) */
 
 }
@@ -535,17 +605,19 @@ typedef struct _fft_data
 ----------------------------------------------------------------------------------------*/
 /* Hardeware fft_func */
 static void fft_func(void)  {
-    int i=0,j,k,ofset;
+    int i=0,j,k,l,ofset;
     int8_t r,g,b;
     int8_t rh,gh,bh;
     int8_t rl,gl,bl;
-    int16_t rgbl,rgbh;
+    int16_t rgbl,rgbh,gray;
+    int8_t grayh,grayl;
     int16_t rgblm,rgbhm;
     int32_t rgb;
     complex_hard_t data_hard[FFT_N] = {0};
     fft_data_t *output_data;
     fft_data_t *input_data;
-    float pmax=10;
+    float min,max,temp;
+    float div,mag ;
 
     g_fft_finish_flag=0;
 
@@ -554,18 +626,20 @@ if(SKIPFFT==1) return;
     for (j=0;j<OV_TOP16;j++){
         for (i = 0; i < FFT_N/2 ; i++) /* 0 1 2 3 4 5 ... 255 */
         {
-            if(i<QVGA_WIDTH/2) /* 0 1 2 3 4 5 ... 159 */
+            if(i<QVGA_WIDTH/2)  /* 0 1 ... 159 */
                 rgb = g_fft_gram[(j)*QVGA_WIDTH/2+i];
-            else 
+            else                /* 160 161 ... 255 */
                 rgb = 0;
 
             rgbh = (rgb >> 16)&0xffff;
             rgbl = (rgb      )&0xffff;
+
             data_hard[2*i].real = (int16_t)rgbh;
             data_hard[2*i].imag = (int16_t)0;
             data_hard[2*i+1].real = (int16_t)rgbl;
             data_hard[2*i+1].imag = (int16_t)0;
         }
+
         for (int i = 0; i < FFT_N / 2; ++i) /* 0 1 2 3 4 5 ... 255 */
         {
             input_data = (fft_data_t *)&buffer_input[i];
@@ -589,44 +663,71 @@ if(SKIPFFT==1) return;
 
         }
         /* FFT Result Data Recalc RootMeanSquera */
-        pmax=10;
+        min=max=0;mag=1;
+        //printf("fft_func result start\n");
         for (i = 0; i < FFT_N; i++)
         {
-            hard_power[i] = sqrt(data_hard[i].real * data_hard[i].real + data_hard[i].imag * data_hard[i].imag);
+            /* 振幅計算*/
+            hard_power[i] = IMABS( data_hard[i] ) / (FFT_N/2) ;
 
             //Convert to dBFS
-            hard_power[i] = 20*log(2*hard_power[i]/FFT_N) ;
-            if( hard_power[i]>pmax) pmax = hard_power[i];
-            if(KPU3FFT_DEBUG) rt_kprintf("fft_func 1 :HIGHT=[%d] WIDTH=[%d] hard_power[i]= [%8x] \n",j,i,hard_power[i]  );
+            //hard_power[i] = mag*20*log(2*hard_power[i]/FFT_N) ;
+
+            if(data_hard[i].real==0 && data_hard[i].imag==0) hard_power[i]=0;
+            else{
+                fft_hpower[i] = rint( hard_power[i] );
+                //fft_hpower[i] = rgb5652gray( fft_hpower[i] );
+            }
+            /* FFT後半は全般と同じなので無視する*/
+            if(i >= FFT_N/2){
+                hard_power[i]=0;fft_hpower[i]=0;
+            }
+
+        //    printf("%d\n",fft_hpower[i] );
 
         }
+        //printf("fft_func result end\n");
 
+#if 0
+        interchange_fft( &fft_hpower[0] , FFT_N );
+#endif
+
+#if 1
         /* copy FFT Result to buffer 0->256 */
+        if(KPU3FFT_DEBUG) printf("excel fft_func result start \n");
+        printf("excel fft_func result start \n");
         for (i = 0; i < FFT_N/2 ; i++) /* 0 1 2 3 4 5 6 7 8 10 ... 255 */
         {
-            rgbh = hard_power[ (2*i)  ];
-            rgbl = hard_power[ (2*i) + 1];
-
-            if(rgbh<0)rgbh=0;
-            if(rgbl<0)rgbl=0;
+            rgbh = fft_hpower[ (2*i)  ];
+            rgbl = fft_hpower[ (2*i) + 1];
 
             /* 値の最大値計算 */
-            rh = 0x1f; gh = 0x3f; bh = 0x1f;
-            rl = 0x1f; gl = 0x3f; bl = 0x1f;
-            rgblm = (rl<<11&0xf800)|(gl<<5&0x07e0)|(bl&0x1f);
-            rgbhm = (rh<<11&0xf800)|(gh<<5&0x07e0)|(bh&0x1f);
+            //rh = 0x1f; gh = 0x3f; bh = 0x1f;
+            //rl = 0x1f; gl = 0x3f; bl = 0x1f;
+            //rgblm = (rl<<11&0xf800)|(gl<<5&0x07e0)|(bl&0x1f);
+            //rgbhm = (rh<<11&0xf800)|(gh<<5&0x07e0)|(bh&0x1f);
+            //rgb  = (rgbh<<16)&0xffff0000 | (rgbl&0xffff); 
 
             /* 値の調整実験 */
-            if(rgbh<0x40)rgbh=0;else rgbh=rgbhm;
-            if(rgbl<0x40)rgbl=0;else rgbl=rgblm;
+            // if(rgbh<0x3800)rgbh=0;else rgbh=rgbhm;
+            // if(rgbl<0x3800)rgbl=0;else rgbl=rgblm;
 
             rgb  = (rgbh<<16)&0xffff0000 | (rgbl&0xffff); 
 
             if(i<QVGA_WIDTH/2) /* 0 1 2 3 4 5 ... 159 */
                 g_fft_gram[(j)*QVGA_WIDTH/2+i]=rgb;
-
-            if(KPU3FFT_DEBUG) rt_kprintf("fft_func 2 :HIGHT=[%3d] WIDTH=[%3d] rgb=[%8x] rgbh=[%8x] rgbl=[%8x] \n",j,i, rgb,rgbh,rgbl );
+            else 
+                g_fft_gram[(j)*QVGA_WIDTH/2+i]=0;
+            
+            if(KPU3FFT_DEBUG) printf("%d\n%d\n", rgbh,rgbl );
+            printf("%d\n%d\n",rgbh,rgbl );
+            
+            //if(KPU3FFT_DEBUG) printf("fft_func result1 :HIGHT=[%3d] WIDTH=[%3d] rgb=[%8x] rgbh=[%4x] rgbl=[%4x] \n",j,i, rgb,rgbh,rgbl );
+            //                    printf("fft_func result1 :HIGHT=[%3d] WIDTH=[%3d] rgb=[%8x] \n",j,i, rgb );
         }
+        if(KPU3FFT_DEBUG) printf("excel fft_func result end \n");
+        printf("excel fft_func result end \n");
+#endif
 
     } /* for (j=0;j<OV_TOP16;j++) */
 
