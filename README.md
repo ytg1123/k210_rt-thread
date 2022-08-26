@@ -19,9 +19,11 @@ $ export LD_LIBRARY_PATH=/opt/kendryte-toolchain/bin
 
 ■ gnu gccコンパイラ
 ※ 以下にtar形式で圧縮済みのtarballを格納しているのでいずれかを使用してほしい
+https://github.com/ilg-archived/riscv-none-gcc/releases/tag/v8.2.0-2.2-20190521
+https://github.com/ilg-archived/riscv-none-gcc/releases/tag/v8.2.0-2.2-20190521
+
 $ cd $HOME
 $ cd k210-rt-thread
-このファイル->gnu-mcu-eclipse_riscv-none-gcc.tar.bz2（8.2.0-2.2-20190521-0004と8.2.0-2.2-20210118-0222を両方含むtarball）
 
 ※ gnu-mcu-eclipse版
 ※ /opt/フォルダ直下に以下の通りに各gccを格納する。
@@ -29,7 +31,6 @@ $ tar xvzfp gnu-mcu-eclipse_riscv-none-gcc.tar.bz2　-C /opt
 
 taga@taga-CFSZ5:~/k210-rt-thread$ ls /opt/gnu-mcu-eclipse/riscv-none-gcc/
 8.2.0-2.2-20190521-0004  
-8.2.0-2.2-20210118-0222
 
 ■ rtthread/k210_maixのビルド手順
 ※ MAiX BIT向けです
@@ -53,10 +54,8 @@ $ cd k210-rt-thread/bsp/k210_maix_dock.kpu3
 #toolchain="kendryte"
 #toolchain="k210"
 toolchain="gnu8.2.0-2.2-20190521"
-#toolchain="gnu8.2.0-2.2-20210118"
 
 #EXEC_PATH   = r'/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/bin'
-#EXEC_PATH   = r'/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20210118-0222/bin'
 
 
 if [ $toolchain = "kendryte" ]; then
@@ -105,10 +104,8 @@ defconfig_ov2640
 #toolchain="kendryte"
 #toolchain="k210"
 toolchain="gnu8.2.0-2.2-20190521"
-#toolchain="gnu8.2.0-2.2-20210118"
 
 #EXEC_PATH   = r'/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/bin'
-#EXEC_PATH   = r'/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20210118-0222/bin'
 
 
 if [ $toolchain = "kendryte" ]; then
