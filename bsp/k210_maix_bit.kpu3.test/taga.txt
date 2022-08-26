@@ -1,0 +1,4 @@
+
+kendryte_sdk のソースをrtthreadにマージする作業において
+io_mux_init関数をdriver階層に実装したらexceptionが発生した
+

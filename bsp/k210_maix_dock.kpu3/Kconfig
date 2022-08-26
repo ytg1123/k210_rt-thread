@@ -1,0 +1,52 @@
+mainmenu "RT-Thread Project Configuration"
+
+config BSP_DIR
+    string
+    option env="BSP_ROOT"
+    default "."
+
+config RTT_DIR
+    string
+    option env="RTT_ROOT"
+    //default "../.."
+    default "rt-thread"
+
+config PKGS_DIR
+    string
+    option env="PKGS_ROOT"
+    default "packages"
+
+source "$RTT_DIR/Kconfig"
+source "$PKGS_DIR/Kconfig"
+
+config BOARD_K210_EVB
+    bool
+    select ARCH_RISCV64
+    select PKG_USING_KENDRYTE_SDK
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+    default y
+
+menuconfig BSP_USING_MAIX
+choice
+        prompt "Select the board you use"
+        default BSP_USING_MAIXM1DOCK
+        config BSP_USING_MAIXM1DOCK
+            bool "use MAIXM1DOCK"
+endchoice
+
+menuconfig BSP_USING_K210MMD
+    choice
+        prompt "Select the K210MMD you use"
+        default BSP_USING_K210MMD
+        config BSP_USING_K210MMD
+            bool "use K210MMD"
+        config BSP_USING_NO_K210MMD
+            bool "use NO_K210MMD"
+    endchoice
+
+source "driver/Kconfig"
+
+config __STACKSIZE__
+    int "stack size for interrupt"
+    default 4096
