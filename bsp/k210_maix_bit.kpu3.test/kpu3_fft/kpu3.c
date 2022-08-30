@@ -17,7 +17,6 @@
 #define FALSE   0
 #endif
 
-
 /* 使うカメラの選択 */
 #if   defined(CAM_USING_OV2640)
 #include "drv_ov2640.h"
@@ -92,6 +91,7 @@ static rt_thread_t kpu3thread = RT_NULL;
 #define FFT_FORWARD_SHIFT   0x0U
 #define FFTLINE_80          80
 #define FFTLINE_192         192
+#define FFTPEAK_MAX         16
 
 /* 38400(=320x240) の内訳 */
 /* 320 X 120 X 32bit値 */
@@ -105,6 +105,8 @@ uint32_t g_lcd_gram1[GRAM_SIZE] __attribute__((aligned(64)));
 float    hard_power[FFT_N];
 int      i_power[FFT_N];
 float    soft_power[FFT_N];
+int      fft_ipeaks[FFTPEAK_MAX];
+float    fft_fpeaks[FFTPEAK_MAX];
 int16_t  fft_hpower[FFT_N];
 int16_t  fft_spower[FFT_N];
 uint64_t fft_out_data[FFT_N / 2];
@@ -159,6 +161,53 @@ static int RGB565Tab6[64] = {
     154, 158, 162, 166, 170, 174, 178, 182, 186, 190, 194, 198, 202, 206, 210, 215,
     219, 223, 227, 231, 235, 239, 243, 247, 251, 255
 };
+
+
+int peak_fft(float *power,int len) 
+{
+  int ctr=0;          // counter to count the amount of peaks
+
+  for(int i = 1; i < len; i++){  // start with one and end with 12, so you don't access elements outside of your array (-1 and 14)
+                                 // You need to implement special cases for the first and the last element
+   if (ctr < FFTPEAK_MAX){
+    if(power[i] > power[i-1] && power[i] > power[i+1]){
+      fft_fpeaks[ctr] = power[i]; // use an assignment instead of a comparison
+      ctr++;                     // increment counter
+    }
+   }
+  }
+
+  printf(" sizeof power[0]  %d \n",sizeof(hard_power[0]) );
+  printf(" sizeof power  %d \n",sizeof(hard_power) );
+  printf("Peak numbers are [ctr=%d] ",ctr);
+  for(int i = 0; i<ctr; i++)
+    printf("%f ", fft_fpeaks[i]);   // Print all the peaks you found, you need to print every element separate 
+
+  return 0;  
+}
+
+int peak_ifft(int16_t *ipower,int len)
+{
+  int ctr=0;          // counter to count the amount of peaks
+
+  for(int i = 1; i < len; i++){  // start with one and end with 12, so you don't access elements outside of your array (-1 and 14)
+   if (ctr < FFTPEAK_MAX){
+    if(ipower[i] > ipower[i-1] && ipower[i] > ipower[i+1]){
+      fft_ipeaks[ctr] = ipower[i]; // use an assignment instead of a comparison
+      ctr++;                     // increment counter
+    }
+   }
+  }
+
+  printf(" sizeof ipower[0]  %d \n",sizeof(i_power[0]) );
+  printf(" sizeof ipower  %d \n",sizeof(i_power) );
+  printf("Peak numbers are [ctr=%d] ",ctr);
+  for(int i = 0; i<ctr; i++)
+    printf("%d ", fft_ipeaks[i]);   // Print all the peaks you found, you need to print every element separate
+
+  return 0;
+}
+
 
 #define IMABS(a)     (float){ ( sqrt( (a).real * (a).real + (a).imag * (a).imag ) )  }
 
@@ -690,6 +739,13 @@ if(SKIPFFT==1) return;
 
 #if 0
         interchange_fft( &fft_hpower[0] , FFT_N );
+#endif
+
+#if 1
+        printf("peak_fft_func  start \n");
+        //peak_fft( &hard_power[0] , FFT_N );
+        peak_ifft( &fft_hpower[0] , FFT_N );
+        printf("peak_fft_func  end \n");
 #endif
 
 #if 1
