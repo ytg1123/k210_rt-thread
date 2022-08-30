@@ -4,7 +4,7 @@
 	bare = false
 	logallrefupdates = true
 [remote "origin"]
-	url = https://ytg1123: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@github.com/ytg1123/k210_rt-thread.git
+	url = https://ytg1123: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@github.com/ytg1123/k210_rt-thread.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
 	remote = origin
