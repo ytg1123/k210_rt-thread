@@ -1,6 +1,5 @@
 Rt-thread k210版のビルド手順
 
-
 ■ k210_rt_thread/k210_maixのビルド手順
 ※MAiX　M1DOCK 及びBIT向けです
 
