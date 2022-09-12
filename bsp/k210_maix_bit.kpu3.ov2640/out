@@ -1,0 +1,2825 @@
+scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: building associated VariantDir targets: build
+CC build/applications/main.o
+CC build/applications/mnt.o
+CC build/driver/board.o
+driver/board.c: In function 'rt_hw_gt_maixpy':
+driver/board.c:146:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+     jump_to_maixpy = (void (*)(void)) jump_addr;
+                      ^
+CC build/driver/camera/drv_ov2640.o
+CC build/driver/drv_gpio.o
+driver/drv_gpio.c: In function 'drv_pin_attach_irq':
+driver/drv_gpio.c:202:5: warning: implicit declaration of function 'rt_hw_interrupt_install'; did you mean 'rt_hw_interrupt_init'? [-Wimplicit-function-declaration]
+     rt_hw_interrupt_install(IRQN_GPIOHS0_INTERRUPT + pin_channel, pin_irq, RT_NULL, irq_name);
+     ^~~~~~~~~~~~~~~~~~~~~~~
+     rt_hw_interrupt_init
+CC build/driver/drv_interrupt.o
+CC build/driver/drv_io_config.o
+driver/drv_io_config.c: In function 'set_cpu_freq':
+driver/drv_io_config.c:127:5: warning: implicit declaration of function 'gpiohs_set_drive_mode'; did you mean 'fpioa_set_tie_value'? [-Wimplicit-function-declaration]
+     gpiohs_set_drive_mode(CORE_VOLTAGE_GPIONUM, GPIO_DM_INPUT);
+     ^~~~~~~~~~~~~~~~~~~~~
+     fpioa_set_tie_value
+driver/drv_io_config.c:128:5: warning: implicit declaration of function 'gpiohs_set_pin'; did you mean 'fpioa_set_io'? [-Wimplicit-function-declaration]
+     gpiohs_set_pin(CORE_VOLTAGE_GPIONUM, GPIO_PV_LOW);
+     ^~~~~~~~~~~~~~
+     fpioa_set_io
+CC build/driver/drv_lcd.o
+CC build/driver/drv_spi.o
+CC build/driver/drv_uart.o
+driver/drv_uart.c: In function 'uart_control':
+driver/drv_uart.c:163:9: warning: implicit declaration of function 'rt_hw_interrupt_install'; did you mean 'rt_hw_interrupt_init'? [-Wimplicit-function-declaration]
+         rt_hw_interrupt_install(uart->irqno, uart_irq_handler,
+         ^~~~~~~~~~~~~~~~~~~~~~~
+         rt_hw_interrupt_init
+CC build/driver/heap.o
+CC build/driver/lcd.o
+driver/lcd.c: In function 'send_line':
+driver/lcd.c:278:70: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+   lcd_draw_picture(0,y,window_width,DRAW_NLINES,(uint32_t*)(void*)((((uint32_t)b)&0x0FFFFFFF)|0x80000000));
+                                                                      ^
+driver/lcd.c:278:60: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+   lcd_draw_picture(0,y,window_width,DRAW_NLINES,(uint32_t*)(void*)((((uint32_t)b)&0x0FFFFFFF)|0x80000000));
+                                                            ^
+CXX build/kernel/components/cplusplus/Mutex.o
+CXX build/kernel/components/cplusplus/Semaphore.o
+CXX build/kernel/components/cplusplus/Thread.o
+CXX build/kernel/components/cplusplus/crt.o
+CC build/kernel/components/cplusplus/crt_init.o
+CC build/kernel/components/dfs/filesystems/devfs/devfs.o
+CC build/kernel/components/dfs/filesystems/elmfat/dfs_elm.o
+CC build/kernel/components/dfs/filesystems/elmfat/ff.o
+CC build/kernel/components/dfs/filesystems/elmfat/option/ccsbcs.o
+CC build/kernel/components/dfs/src/dfs.o
+CC build/kernel/components/dfs/src/dfs_file.o
+CC build/kernel/components/dfs/src/dfs_fs.o
+CC build/kernel/components/dfs/src/dfs_posix.o
+CC build/kernel/components/dfs/src/poll.o
+CC build/kernel/components/dfs/src/select.o
+CC build/kernel/components/drivers/misc/pin.o
+CC build/kernel/components/drivers/rtc/rtc.o
+CC build/kernel/components/drivers/serial/serial.o
+CC build/kernel/components/drivers/spi/spi_core.o
+CC build/kernel/components/drivers/spi/spi_dev.o
+CC build/kernel/components/drivers/spi/spi_msd.o
+CC build/kernel/components/drivers/src/completion.o
+CC build/kernel/components/drivers/src/dataqueue.o
+CC build/kernel/components/drivers/src/pipe.o
+CC build/kernel/components/drivers/src/ringblk_buf.o
+CC build/kernel/components/drivers/src/ringbuffer.o
+CC build/kernel/components/drivers/src/waitqueue.o
+CC build/kernel/components/drivers/src/workqueue.o
+CC build/kernel/components/finsh/cmd.o
+CC build/kernel/components/finsh/msh.o
+CC build/kernel/components/finsh/msh_file.o
+CC build/kernel/components/finsh/shell.o
+CC build/kernel/components/libc/compilers/newlib/libc.o
+CC build/kernel/components/libc/compilers/newlib/libc_syms.o
+CC build/kernel/components/libc/compilers/newlib/stdio.o
+CC build/kernel/components/libc/compilers/newlib/syscalls.o
+CC build/kernel/components/libc/compilers/newlib/time.o
+AS build/kernel/libcpu/risc-v/common/context_gcc.o
+CC build/kernel/libcpu/risc-v/common/cpuport.o
+CC build/kernel/libcpu/risc-v/k210/cpuport_smp.o
+CC build/kernel/libcpu/risc-v/k210/interrupt.o
+AS build/kernel/libcpu/risc-v/k210/interrupt_gcc.o
+AS build/kernel/libcpu/risc-v/k210/startup_gcc.o
+CC build/kernel/libcpu/risc-v/k210/tick.o
+CC build/kernel/src/clock.o
+CC build/kernel/src/components.o
+CC build/kernel/src/cpu.o
+CC build/kernel/src/device.o
+CC build/kernel/src/idle.o
+CC build/kernel/src/ipc.o
+CC build/kernel/src/irq.o
+CC build/kernel/src/kservice.o
+CC build/kernel/src/mem.o
+CC build/kernel/src/mempool.o
+CC build/kernel/src/object.o
+CC build/kernel/src/scheduler.o
+CC build/kernel/src/signal.o
+CC build/kernel/src/thread.o
+CC build/kernel/src/timer.o
+CC build/kpu3_fft/fft_soft.o
+CC build/kpu3_fft/kpu3.o
+kpu3_fft/kpu3.c: In function 'dvp_irq':
+kpu3_fft/kpu3.c:453:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+         dvp_set_display_addr(g_ram_mux ? (uint32_t)&g_lcd_gram1[0] : (uint32_t)&g_lcd_gram0[0]);
+                                          ^
+kpu3_fft/kpu3.c:453:70: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+         dvp_set_display_addr(g_ram_mux ? (uint32_t)&g_lcd_gram1[0] : (uint32_t)&g_lcd_gram0[0]);
+                                                                      ^
+kpu3_fft/kpu3.c: In function 'kpu3_main':
+kpu3_fft/kpu3.c:970:5: warning: implicit declaration of function 'io_mux_init'; did you mean 'rt_mq_init'? [-Wimplicit-function-declaration]
+     io_mux_init();
+     ^~~~~~~~~~~
+     rt_mq_init
+kpu3_fft/kpu3.c:971:5: warning: implicit declaration of function 'io_set_power'; did you mean '_fsetpos_r'? [-Wimplicit-function-declaration]
+     io_set_power();
+     ^~~~~~~~~~~~
+     _fsetpos_r
+kpu3_fft/kpu3.c:985:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
+     kfb->pix_buf0 = g_lcd_gram0;
+                   ^
+kpu3_fft/kpu3.c:986:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
+     kfb->pix_buf1 = g_lcd_gram1;
+                   ^
+kpu3_fft/kpu3.c:987:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
+     kfb->pix_buf1 = g_lcd_gram0;
+                   ^
+kpu3_fft/kpu3.c:1009:5: warning: implicit declaration of function 'lv_init'; did you mean 'lcd_init'? [-Wimplicit-function-declaration]
+     lv_init();
+     ^~~~~~~
+     lcd_init
+kpu3_fft/kpu3.c:1011:5: warning: implicit declaration of function 'disp_init'; did you mean 'dfs_init'? [-Wimplicit-function-declaration]
+     disp_init();
+     ^~~~~~~~~
+     dfs_init
+kpu3_fft/kpu3.c:1056:5: warning: implicit declaration of function 'init_cam'; did you mean 'init_tls'? [-Wimplicit-function-declaration]
+     init_cam();
+     ^~~~~~~~
+     init_tls
+kpu3_fft/kpu3.c:1060:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dvp_set_ai_addr( (uint32_t)g_ai_buf,                                        /* Red */
+                      ^
+kpu3_fft/kpu3.c:1061:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+                      (uint32_t)(g_ai_buf + G_AI_WIDTH * G_AI_HIGHT),            /* Green */
+                      ^
+kpu3_fft/kpu3.c:1062:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+                      (uint32_t)(g_ai_buf + G_AI_WIDTH * G_AI_HIGHT * 2) );      /* Blue */
+                      ^
+kpu3_fft/kpu3.c:1067:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dvp_set_display_addr( (uint32_t)&g_lcd_gram0[0] );
+                           ^
+kpu3_fft/kpu3.c:1083:5: warning: implicit declaration of function 'enable_cam' [-Wimplicit-function-declaration]
+     enable_cam(1);
+     ^~~~~~~~~~
+kpu3_fft/kpu3.c:1143:58: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+         lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT ,  (uint32_t)&g_fft_gram[0] );
+                                                          ^
+kpu3_fft/kpu3.c:1143:58: warning: passing argument 5 of 'lcd_draw_picture' makes pointer from integer without a cast [-Wint-conversion]
+         lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT ,  (uint32_t)&g_fft_gram[0] );
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+In file included from kpu3_fft/kpu3.c:29:
+kpu3_fft/lcd.h:78:92: note: expected 'uint32_t *' {aka 'unsigned int *'} but argument is of type 'unsigned int'
+ void lcd_draw_picture(uint16_t x1, uint16_t y1, uint16_t width, uint16_t height, uint32_t *ptr);
+                                                                                  ~~~~~~~~~~^~~
+kpu3_fft/kpu3.c: In function 'kpu_v3':
+kpu3_fft/kpu3.c:1205:30: warning: implicit declaration of function 'iomem_malloc'; did you mean 'rt_malloc'? [-Wimplicit-function-declaration]
+      model_data = (uint8_t *)iomem_malloc(KMODEL_SIZE);
+                              ^~~~~~~~~~~~
+                              rt_malloc
+kpu3_fft/kpu3.c:1205:19: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+      model_data = (uint8_t *)iomem_malloc(KMODEL_SIZE);
+                   ^
+kpu3_fft/kpu3.c: In function 'kpu_v3_stop':
+kpu3_fft/kpu3.c:1240:9: warning: implicit declaration of function 'iomem_free'; did you mean 'rt_free'? [-Wimplicit-function-declaration]
+         iomem_free(model_data);
+         ^~~~~~~~~~
+         rt_free
+CC build/kpu3_fft/region_layer.o
+kpu3_fft/region_layer.c: In function 'do_nms_sort':
+kpu3_fft/region_layer.c:271:56: warning: passing argument 4 of 'qsort' from incompatible pointer type [-Wincompatible-pointer-types]
+         qsort(s, boxes_number, sizeof(sortable_box_t), nms_comparator);
+                                                        ^~~~~~~~~~~~~~
+In file included from kpu3_fft/region_layer.c:4:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/riscv-none-embed/include/stdlib.h:139:72: note: expected '__compar_fn_t' {aka 'int (*)(const void *, const void *)'} but argument is of type 'int (*)(void *, void *)'
+ void qsort (void *__base, size_t __nmemb, size_t __size, __compar_fn_t _compar);
+                                                          ~~~~~~~~~~~~~~^~~~~~~
+kpu3_fft/region_layer.c: In function 'do_more_nms_sort':
+kpu3_fft/region_layer.c:349:56: warning: passing argument 4 of 'qsort' from incompatible pointer type [-Wincompatible-pointer-types]
+         qsort(s, boxes_number, sizeof(sortable_box_t), nms_comparator);
+                                                        ^~~~~~~~~~~~~~
+In file included from kpu3_fft/region_layer.c:4:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/riscv-none-embed/include/stdlib.h:139:72: note: expected '__compar_fn_t' {aka 'int (*)(const void *, const void *)'} but argument is of type 'int (*)(void *, void *)'
+ void qsort (void *__base, size_t __nmemb, size_t __size, __compar_fn_t _compar);
+                                                          ~~~~~~~~~~~~~~^~~~~~~
+CC build/lcd_image_LVGL/lv_core/lv_disp.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:17,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/../lv_hal/lv_hal_disp.h:19,
+                 from lcd_image_LVGL/lv_core/../lv_hal/lv_hal.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:17,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/../lv_hal/lv_hal_disp.h:19,
+                 from lcd_image_LVGL/lv_core/../lv_hal/lv_hal.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:17,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/../lv_hal/lv_hal_disp.h:19,
+                 from lcd_image_LVGL/lv_core/../lv_hal/lv_hal.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.h:16,
+                 from lcd_image_LVGL/lv_core/lv_disp.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_core/lv_group.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_group.h:17,
+                 from lcd_image_LVGL/lv_core/lv_group.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_core/lv_indev.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_indev.h:16,
+                 from lcd_image_LVGL/lv_core/lv_indev.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_core/lv_obj.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_obj.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_core/lv_refr.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_core/lv_refr.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_core/lv_style.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_core/lv_style.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_arc.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_blend.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_area.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_area.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_area.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_blend.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_img.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_label.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_line.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.c:13:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_draw_line.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.c:13:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_draw_line.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_refr.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_line.c:13:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_draw_line.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_mask.o
+CC build/lcd_image_LVGL/lv_draw/lv_draw_rect.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_draw_triangle.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_rect.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_draw_triangle.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_img_buf.o
+CC build/lcd_image_LVGL/lv_draw/lv_img_cache.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_cache.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_draw/lv_img_decoder.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_draw/lv_img_buf.h:16,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.h:19,
+                 from lcd_image_LVGL/lv_draw/lv_img_decoder.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_font/lv_font.o
+CC build/lcd_image_LVGL/lv_font/lv_font_dejavu_16_persian_hebrew.o
+CC build/lcd_image_LVGL/lv_font/lv_font_fmt_txt.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_exgothic_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_exmincho_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_gothic_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_mincho_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_pgothic_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_ipa_pmincho_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_loader.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_10.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_12.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_12_subpx.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_14.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_18.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_20.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_22.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_24.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_26.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_28.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_28_compressed.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_30.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_32.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_34.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_36.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_38.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_40.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_42.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_44.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_46.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_48.o
+CC build/lcd_image_LVGL/lv_font/lv_font_montserrat_8.o
+CC build/lcd_image_LVGL/lv_font/lv_font_simsun_16_cjk.o
+CC build/lcd_image_LVGL/lv_font/lv_font_unscii_16.o
+CC build/lcd_image_LVGL/lv_font/lv_font_unscii_8.o
+CC build/lcd_image_LVGL/lv_hal/lv_hal_disp.o
+CC build/lcd_image_LVGL/lv_hal/lv_hal_indev.o
+CC build/lcd_image_LVGL/lv_hal/lv_hal_tick.o
+CC build/lcd_image_LVGL/lv_misc/lv_anim.o
+CC build/lcd_image_LVGL/lv_misc/lv_area.o
+CC build/lcd_image_LVGL/lv_misc/lv_async.o
+CC build/lcd_image_LVGL/lv_misc/lv_bidi.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:11:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:11:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:11:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_bidi.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_misc/lv_color.o
+CC build/lcd_image_LVGL/lv_misc/lv_debug.o
+CC build/lcd_image_LVGL/lv_misc/lv_fs.o
+CC build/lcd_image_LVGL/lv_misc/lv_gc.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_gc.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_misc/lv_ll.o
+CC build/lcd_image_LVGL/lv_misc/lv_log.o
+CC build/lcd_image_LVGL/lv_misc/lv_math.o
+CC build/lcd_image_LVGL/lv_misc/lv_mem.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_decoder.h:23,
+                 from lcd_image_LVGL/lv_misc/../lv_draw/lv_img_cache.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_gc.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_gc.h:17,
+                 from lcd_image_LVGL/lv_misc/lv_mem.c:12:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_misc/lv_printf.o
+CC build/lcd_image_LVGL/lv_misc/lv_task.o
+CC build/lcd_image_LVGL/lv_misc/lv_templ.o
+CC build/lcd_image_LVGL/lv_misc/lv_txt.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_txt.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_txt.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_txt.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_misc/lv_txt_ap.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:11:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:11:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:11:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_bidi.h:18,
+                 from lcd_image_LVGL/lv_misc/lv_txt_ap.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_misc/lv_utils.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_utils.c:14:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_utils.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_utils.c:14:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_utils.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_misc/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_misc/lv_txt.h:21,
+                 from lcd_image_LVGL/lv_misc/lv_utils.c:14:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_misc/lv_utils.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_themes/lv_theme.o
+CC build/lcd_image_LVGL/lv_themes/lv_theme_empty.o
+CC build/lcd_image_LVGL/lv_themes/lv_theme_material.o
+CC build/lcd_image_LVGL/lv_themes/lv_theme_mono.o
+CC build/lcd_image_LVGL/lv_themes/lv_theme_template.o
+CC build/lcd_image_LVGL/lv_widgets/lv_arc.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_arc.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_bar.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_bar.c:11:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_btn.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_btn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_btnmatrix.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_btnmatrix.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_calendar.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_calendar.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_canvas.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_canvas.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_chart.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_chart.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_checkbox.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_checkbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_cont.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cont.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_cpicker.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_cpicker.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_dropdown.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_dropdown.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_gauge.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_gauge.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_img.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_img.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_img.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_imgbtn.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/lv_theme.h:17,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:11:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/lv_theme.h:17,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:11:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_themes/lv_theme.h:17,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:11:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_misc/lv_debug.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_imgbtn.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_keyboard.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_keyboard.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_label.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_label.h:21,
+                 from lcd_image_LVGL/lv_widgets/lv_label.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_led.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_led.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_led.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_line.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_line.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_line.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_linemeter.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_linemeter.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_list.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_list.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_list.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_msgbox.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.h:33,
+                 from lcd_image_LVGL/lv_widgets/lv_msgbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_objmask.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_objmask.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_objx_templ.o
+CC build/lcd_image_LVGL/lv_widgets/lv_page.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_page.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_roller.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_roller.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_slider.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_slider.c:10:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_spinbox.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_spinbox.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_spinner.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_spinner.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_switch.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_switch.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_table.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_table.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_table.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_tabview.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_tabview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_textarea.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.h:29,
+                 from lcd_image_LVGL/lv_widgets/lv_textarea.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_tileview.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_cont.h:20,
+                 from lcd_image_LVGL/lv_widgets/../lv_widgets/lv_page.h:25,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_tileview.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lv_widgets/lv_win.o
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+rt-thread/include/rtdef.h:111: warning: "bool" redefined
+ #define bool _Bool8
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:33: note: this is the location of the previous definition
+ #define bool _Bool
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+rt-thread/include/rtdef.h:112: warning: "true" redefined
+ #define true  (bool)1
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:34: note: this is the location of the previous definition
+ #define true 1
+ 
+In file included from rt-thread/include/rtthread.h:24,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/../lv_font/lv_font.h:16,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_style.h:17,
+                 from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:20,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+rt-thread/include/rtdef.h:113: warning: "false" redefined
+ #define false (bool)0
+ 
+In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
+                 from lcd_image_LVGL/lv_widgets/lv_win.h:37,
+                 from lcd_image_LVGL/lv_widgets/lv_win.c:9:
+/opt/gnu-mcu-eclipse/riscv-none-gcc/8.2.0-2.2-20190521-0004/lib/gcc/riscv-none-embed/8.2.0/include/stdbool.h:35: note: this is the location of the previous definition
+ #define false 0
+ 
+CC build/lcd_image_LVGL/lvgl.o
+lcd_image_LVGL/lvgl.c: In function 'lvgl_main':
+lcd_image_LVGL/lvgl.c:146:3: warning: implicit declaration of function 'io_mux_init'; did you mean 'rt_mq_init'? [-Wimplicit-function-declaration]
+   io_mux_init();
+   ^~~~~~~~~~~
+   rt_mq_init
+lcd_image_LVGL/lvgl.c:147:3: warning: implicit declaration of function 'io_set_power'; did you mean '_fsetpos_r'? [-Wimplicit-function-declaration]
+   io_set_power();
+   ^~~~~~~~~~~~
+   _fsetpos_r
+lcd_image_LVGL/lvgl.c: In function 'lvga_test':
+lcd_image_LVGL/lvgl.c:170:30: warning: passing argument 2 of 'rt_thread_create' from incompatible pointer type [-Wincompatible-pointer-types]
+                              lvgl_main,
+                              ^~~~~~~~~
+In file included from lcd_image_LVGL/lvgl.c:1:
+rt-thread/include/rtthread.h:129:37: note: expected 'void (*)(void *)' but argument is of type 'int (*)(void)'
+                              void (*entry)(void *parameter),
+                              ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry_user.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/locks.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/sleep.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/aes.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/apu.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/clint.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/dmac.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/dvp.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/fft.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/fpioa.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/gpio.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/gpiohs.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/i2c.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/i2s.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/iomem.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/kpu.o
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/kpu.c: In function 'kpu_load_kmodel':
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/kpu.c:1432:34: warning: multi-character character constant [-Wmultichar]
+     } else if(header->version == 'KMDL')
+                                  ^~~~~~
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/plic.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/pwm.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/rtc.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/sha256.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/spi.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/sysctl.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/timer.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/uart.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/uarths.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/utils.o
+CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/drivers/wdt.o
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/nncase.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/target_interpreter.h:19,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/nncase.cpp:17:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/cpu/cpu_ops.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/target_interpreter.h:19,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/kernel_registry.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/cpu/cpu_ops.cpp:16:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/interpreter.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/interpreter.cpp:17:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/k210/interpreter.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/k210/interpreter.cpp:15:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/k210/k210_ops.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/target_interpreter.h:19,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/kernel_registry.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/k210/k210_ops.cpp:17:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/kernel_registry.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/target_interpreter.h:19,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/kernel_registry.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/kernel_registry.cpp:17:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+CXX build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/neutral/neutral_ops.o
+In file included from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/interpreter.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/k210/interpreter.h:17,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/target_interpreter.h:19,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/kernel_registry.h:16,
+                 from packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/runtime/neutral/neutral_ops.cpp:16:
+packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/nncase/include/runtime/model.h:43:43: warning: multi-character character constant [-Wmultichar]
+     constexpr uint32_t MODEL_IDENTIFIER = 'KMDL';
+                                           ^~~~~~
+LINK rtthread.elf
+riscv-none-embed-objcopy -O binary rtthread.elf rtthread.bin
+riscv-none-embed-size rtthread.elf
+   text	   data	    bss	    dec	    hex	filename
+ 995510	   4848	 833849	1834207	 1bfcdf	rtthread.elf
+scons: done building targets.
