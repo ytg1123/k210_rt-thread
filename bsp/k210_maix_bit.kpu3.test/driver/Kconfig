@@ -169,26 +169,23 @@ menuconfig BSP_USING_CAMERA
     endchoice
 
     if CAM_USING_OV2640
-    config OV2640
-    int "OV2640"
-    default 1
+        config OV2640
+        int "OV2640"
+        default 1
 
-    config OV5640
-    int "OV5640"
-    default 0
-
+        config OV5640
+        int "OV5640"
+        default 0
     endif
 
     if CAM_USING_OV5640
+        config OV2640
+        int "OV2640"
+        default 0
 
-    config OV2640
-    int "OV2640"
-    default 0
-
-    config OV5640
-    int "OV5640"
-    default 1
-
+        config OV5640
+        int "OV5640"
+        default 1
     endif
 
     config BSP_CAMERA_SCCB_SDA_PIN

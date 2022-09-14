@@ -16,6 +16,14 @@
 #include <math.h>
 #include <unistd.h>
 
+#ifdef CAM_USING_OV2640
+#include "drv_ov2640.h"
+#endif
+
+#ifdef CAM_USING_OV5640
+#include "drv_ov5640.h"
+#endif
+
 #include "dvp.h"
 #include "plic.h"
 #include "fpioa.h"
@@ -207,19 +215,11 @@ void init_cam(void){
     rt_thread_mdelay(10);
 
 #if defined(CAM_USING_OV2640)
+
     /*init dvp camera hardware interface*/
-    /* DVP init */
     printf("ov2640 init\n");
-    dvp_init(8);
-    dvp_set_xclk_rate(24000000);
-    dvp_enable_burst();
-    dvp_set_output_enable(0, 1);              /* AI Out Enabled */
-    dvp_set_output_enable(1, 1);              /* DISP Out Enabled */
-    dvp_set_image_format(DVP_CFG_RGB_FORMAT); /* RGB 565 Format */
-    dvp_set_image_size(320, 240);
     ov2640_init();
     rt_thread_mdelay(10);
-
     ov2640_set_pixformat(PIXFORMAT_RGB565);
     rt_thread_mdelay(10);
     ov2640_set_framesize(FRAMESIZE_QVGA);
@@ -242,6 +242,16 @@ void init_cam(void){
     //exposure
     ov2640_set_exposure(4);
     rt_thread_mdelay(2);
+
+     dvp_init(8);
+     dvp_set_xclk_rate(24000000);
+     dvp_enable_burst();
+     dvp_set_output_enable(DVP_OUTPUT_DISPLAY, 1);
+     dvp_set_output_enable(DVP_OUTPUT_AI, 1);
+     dvp_set_image_format(DVP_CFG_RGB_FORMAT);
+     dvp_set_image_size(OV_WIDTH,OV_HIGHT);
+     ov2640_init();
+
 
 #elif defined(CAM_USING_OV5640)
     /*init dvp camera hardware interface*/

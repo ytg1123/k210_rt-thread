@@ -1,6 +1,7 @@
 #ifndef __DRV_OV2640_H
 #define __DRV_OV2640_H
 #include "rtthread.h"
+
 #ifdef CAM_USING_OV2640
 #include <stdint.h>
 #include "ov2640reg.h"

@@ -37,6 +37,7 @@ fi
 #export RTT_EXEC_PATH=/home/taga/rt-thread/gcc-arm-none-eabi-7-2018-q2-update/bin
 
 cp defconfig_ov5640_lvgl .config
+#cp defconfig_ov2640_lvgl .config
 rm -rf build/*
 scons --menuconfig
 source ~/.env/env.sh

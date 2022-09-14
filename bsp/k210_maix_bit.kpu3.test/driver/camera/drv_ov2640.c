@@ -1,4 +1,5 @@
 #include "rtthread.h"
+
 #ifdef CAM_USING_OV2640
 #include "ov2640reg.h"
 #include "ov2640cfg.h"

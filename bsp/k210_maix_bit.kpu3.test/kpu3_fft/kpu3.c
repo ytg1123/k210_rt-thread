@@ -177,11 +177,11 @@ int peak_fft(float *power,int len)
    }
   }
 
-  printf(" sizeof power[0]  %d \n",sizeof(hard_power[0]) );
-  printf(" sizeof power  %d \n",sizeof(hard_power) );
-  printf("Peak numbers are [ctr=%d] ",ctr);
+  if(KPU3FFT_DEBUG) printf(" sizeof power[0]  %d \n",sizeof(hard_power[0]) );
+  if(KPU3FFT_DEBUG) printf(" sizeof power  %d \n",sizeof(hard_power) );
+  if(KPU3FFT_DEBUG) printf("Peak numbers are [ctr=%d] ",ctr);
   for(int i = 0; i<ctr; i++)
-    printf("%f ", fft_fpeaks[i]);   // Print all the peaks you found, you need to print every element separate 
+    if(KPU3FFT_DEBUG) printf("%f ", fft_fpeaks[i]);   // Print all the peaks you found, you need to print every element separate 
 
   return 0;  
 }
@@ -199,11 +199,11 @@ int peak_ifft(int16_t *ipower,int len)
    }
   }
 
-  printf(" sizeof ipower[0]  %d \n",sizeof(i_power[0]) );
-  printf(" sizeof ipower  %d \n",sizeof(i_power) );
-  printf("Peak numbers are [ctr=%d] ",ctr);
+  if(KPU3FFT_DEBUG) printf(" sizeof ipower[0]  %d \n",sizeof(i_power[0]) );
+  if(KPU3FFT_DEBUG) printf(" sizeof ipower  %d \n",sizeof(i_power) );
+  if(KPU3FFT_DEBUG) printf("Peak numbers are [ctr=%d] ",ctr);
   for(int i = 0; i<ctr; i++)
-    printf("%d ", fft_ipeaks[i]);   // Print all the peaks you found, you need to print every element separate
+    if(KPU3FFT_DEBUG) printf("%d ", fft_ipeaks[i]);   // Print all the peaks you found, you need to print every element separate
 
   return 0;
 }
@@ -211,6 +211,7 @@ int peak_ifft(int16_t *ipower,int len)
 
 #define IMABS(a)     (float){ ( sqrt( (a).real * (a).real + (a).imag * (a).imag ) )  }
 
+/* 中心から右半分を左側に寄せる*/
 void interchange_fft( int16_t *d, int lx ) {
 int  x,y,ly=lx,hlx=lx/2,hly=ly/2 ;
 int16_t t;
@@ -727,7 +728,7 @@ if(SKIPFFT==1) return;
                 fft_hpower[i] = rint( hard_power[i] );
                 //fft_hpower[i] = rgb5652gray( fft_hpower[i] );
             }
-            /* FFT後半は全般と同じなので無視する*/
+            /* FFT後半は前半と同じなので無視する*/
             if(i >= FFT_N/2){
                 hard_power[i]=0;fft_hpower[i]=0;
             }
@@ -738,10 +739,11 @@ if(SKIPFFT==1) return;
         //printf("fft_func result end\n");
 
 #if 0
+        /* 中心から右半分を左側に寄せる*/
         interchange_fft( &fft_hpower[0] , FFT_N );
 #endif
 
-#if 1
+#if 0
         printf("peak_fft_func  start \n");
         //peak_fft( &hard_power[0] , FFT_N );
         peak_ifft( &fft_hpower[0] , FFT_N );
@@ -751,7 +753,7 @@ if(SKIPFFT==1) return;
 #if 1
         /* copy FFT Result to buffer 0->256 */
         if(KPU3FFT_DEBUG) printf("excel fft_func result start \n");
-        printf("excel fft_func result start \n");
+        if(KPU3FFT_DEBUG) printf("excel fft_func result start \n");
         for (i = 0; i < FFT_N/2 ; i++) /* 0 1 2 3 4 5 6 7 8 10 ... 255 */
         {
             rgbh = fft_hpower[ (2*i)  ];
@@ -776,13 +778,13 @@ if(SKIPFFT==1) return;
                 g_fft_gram[(j)*QVGA_WIDTH/2+i]=0;
             
             if(KPU3FFT_DEBUG) printf("%d\n%d\n", rgbh,rgbl );
-            printf("%d\n%d\n",rgbh,rgbl );
+            if(KPU3FFT_DEBUG) printf("%d\n%d\n",rgbh,rgbl );
             
             //if(KPU3FFT_DEBUG) printf("fft_func result1 :HIGHT=[%3d] WIDTH=[%3d] rgb=[%8x] rgbh=[%4x] rgbl=[%4x] \n",j,i, rgb,rgbh,rgbl );
             //                    printf("fft_func result1 :HIGHT=[%3d] WIDTH=[%3d] rgb=[%8x] \n",j,i, rgb );
         }
         if(KPU3FFT_DEBUG) printf("excel fft_func result end \n");
-        printf("excel fft_func result end \n");
+        if(KPU3FFT_DEBUG) printf("excel fft_func result end \n");
 #endif
 
     } /* for (j=0;j<OV_TOP16;j++) */
@@ -1027,6 +1029,31 @@ void kpu3_main(void *parameter) {
     /* DVP Camera Init */
     init_cam();
 
+#if   defined(CAM_USING_OV2640)
+
+     dvp_init(8);
+     dvp_set_xclk_rate(24000000);
+     dvp_enable_burst();
+     dvp_set_output_enable(DVP_OUTPUT_DISPLAY, 1);
+     dvp_set_output_enable(DVP_OUTPUT_AI, 1);
+     dvp_set_image_format(DVP_CFG_RGB_FORMAT);
+     dvp_set_image_size(OV_WIDTH,OV_HIGHT);
+     ov2640_init();
+
+#elif defined(CAM_USING_OV5640)
+    dvp_init(16);
+    dvp_set_xclk_rate(50000000);
+    dvp_enable_burst();
+    dvp_set_output_enable(0, 1);              /* AI Out Enabled */
+    dvp_set_output_enable(1, 1);              /* DISP Out Enabled */
+    dvp_set_image_format(DVP_CFG_RGB_FORMAT); /* RGB 565 Format */
+    dvp_set_image_size(320, 240);
+    ov5640_init();
+    rt_thread_mdelay(10);
+    printf("ov5640 init\n");
+
+#endif
+
     /* ai address setting: ai bufferとはkpu演算用RAMバッファ */
     /* カメラ画像をaiバッファに取り込む設定実施*/
     dvp_set_ai_addr( (uint32_t)g_ai_buf,                                        /* Red */
@@ -1112,11 +1139,14 @@ void kpu3_main(void *parameter) {
             ;
 
         //lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT, (uint32_t)&g_lcd_gram0[0] );
-        lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT ,  (uint32_t)&g_fft_gram[0] );
+
+        //lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT ,  (uint32_t)&g_fft_gram[0] );
+        lcd_draw_picture(0, 0, QVGA_WIDTH, 16 ,  (uint32_t)&g_fft_gram[0] );
+
         g_fft_finish_flag = 0;
         g_dvp_finish_flag = 0;
 
-#if 0
+#if 1
         /* run face detect */
         /* KPU演算を実行開始する*/
         /* ai_bufのカメラ画像をKPU演算する*/
