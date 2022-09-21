@@ -84,7 +84,7 @@ fft_lcd_MAiXBIT/board_config.h:4: warning: "OV5640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:198: note: this is the location of the previous definition
+./rtconfig.h:264: note: this is the location of the previous definition
  #define OV5640 1
  
 In file included from fft_lcd_MAiXBIT/main.c:32:
@@ -93,7 +93,7 @@ fft_lcd_MAiXBIT/board_config.h:5: warning: "OV2640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:197: note: this is the location of the previous definition
+./rtconfig.h:263: note: this is the location of the previous definition
  #define OV2640 0
  
 CC build/k210_mmd/esp32.o
@@ -181,77 +181,77 @@ CC build/kernel/src/timer.o
 CC build/kpu3/fft_soft.o
 CC build/kpu3/kpu3.o
 kpu3/kpu3.c: In function 'dvp_irq':
-kpu3/kpu3.c:166:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:167:42: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
          dvp_set_display_addr(g_ram_mux ? (uint32_t)&g_lcd_gram0[0] : (uint32_t)&g_lcd_gram1[0]);
                                           ^
-kpu3/kpu3.c:166:70: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:167:70: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
          dvp_set_display_addr(g_ram_mux ? (uint32_t)&g_lcd_gram0[0] : (uint32_t)&g_lcd_gram1[0]);
                                                                       ^
 kpu3/kpu3.c: In function 'kpu3_main':
-kpu3/kpu3.c:253:5: warning: implicit declaration of function 'io_mux_init'; did you mean 'rt_mq_init'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:254:5: warning: implicit declaration of function 'io_mux_init'; did you mean 'rt_mq_init'? [-Wimplicit-function-declaration]
      io_mux_init();
      ^~~~~~~~~~~
      rt_mq_init
-kpu3/kpu3.c:254:5: warning: implicit declaration of function 'io_set_power'; did you mean '_fsetpos_r'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:255:5: warning: implicit declaration of function 'io_set_power'; did you mean '_fsetpos_r'? [-Wimplicit-function-declaration]
      io_set_power();
      ^~~~~~~~~~~~
      _fsetpos_r
-kpu3/kpu3.c:268:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
+kpu3/kpu3.c:269:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
      kfb->pix_buf0 = g_lcd_gram0;
                    ^
-kpu3/kpu3.c:269:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
+kpu3/kpu3.c:270:19: warning: assignment to 'uint8_t *' {aka 'unsigned char *'} from incompatible pointer type 'uint32_t *' {aka 'unsigned int *'} [-Wincompatible-pointer-types]
      kfb->pix_buf1 = g_lcd_gram1;
                    ^
-kpu3/kpu3.c:291:5: warning: implicit declaration of function 'lv_init'; did you mean 'lcd_init'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:292:5: warning: implicit declaration of function 'lv_init'; did you mean 'lcd_init'? [-Wimplicit-function-declaration]
      lv_init();
      ^~~~~~~
      lcd_init
-kpu3/kpu3.c:293:5: warning: implicit declaration of function 'disp_init'; did you mean 'dfs_init'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:294:5: warning: implicit declaration of function 'disp_init'; did you mean 'dfs_init'? [-Wimplicit-function-declaration]
      disp_init();
      ^~~~~~~~~
      dfs_init
-kpu3/kpu3.c:310:5: warning: implicit declaration of function 'init_cam'; did you mean 'init_tls'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:311:5: warning: implicit declaration of function 'init_cam'; did you mean 'init_tls'? [-Wimplicit-function-declaration]
      init_cam();
      ^~~~~~~~
      init_tls
-kpu3/kpu3.c:339:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:340:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
      dvp_set_ai_addr( (uint32_t)g_ai_buf,                                        /* Red */
                       ^
-kpu3/kpu3.c:340:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:341:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
                       (uint32_t)(g_ai_buf + G_AI_WIDTH * G_AI_HIGHT),            /* Green */
                       ^
-kpu3/kpu3.c:341:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:342:22: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
                       (uint32_t)(g_ai_buf + G_AI_WIDTH * G_AI_HIGHT * 2) );      /* Blue */
                       ^
-kpu3/kpu3.c:346:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:347:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
      dvp_set_display_addr( (uint32_t)&g_lcd_gram0[0] );
                            ^
-kpu3/kpu3.c:362:5: warning: implicit declaration of function 'enable_cam' [-Wimplicit-function-declaration]
+kpu3/kpu3.c:363:5: warning: implicit declaration of function 'enable_cam' [-Wimplicit-function-declaration]
      enable_cam(1);
      ^~~~~~~~~~
-kpu3/kpu3.c:440:68: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:441:68: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
          lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT, g_ram_mux ? (uint32_t)&g_lcd_gram0[0] : (uint32_t)&g_lcd_gram1[0]);
                                                                     ^
-kpu3/kpu3.c:440:96: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+kpu3/kpu3.c:441:96: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
          lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT, g_ram_mux ? (uint32_t)&g_lcd_gram0[0] : (uint32_t)&g_lcd_gram1[0]);
                                                                                                 ^
-kpu3/kpu3.c:440:94: warning: passing argument 5 of 'lcd_draw_picture' makes pointer from integer without a cast [-Wint-conversion]
+kpu3/kpu3.c:441:94: warning: passing argument 5 of 'lcd_draw_picture' makes pointer from integer without a cast [-Wint-conversion]
          lcd_draw_picture(0, 0, QVGA_WIDTH, QVGA_HIGHT, g_ram_mux ? (uint32_t)&g_lcd_gram0[0] : (uint32_t)&g_lcd_gram1[0]);
                                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from kpu3/kpu3.c:29:
+In file included from kpu3/kpu3.c:30:
 kpu3/lcd.h:78:92: note: expected 'uint32_t *' {aka 'unsigned int *'} but argument is of type 'unsigned int'
  void lcd_draw_picture(uint16_t x1, uint16_t y1, uint16_t width, uint16_t height, uint32_t *ptr);
                                                                                   ~~~~~~~~~~^~~
 kpu3/kpu3.c: In function 'kpu_v3':
-kpu3/kpu3.c:466:30: warning: implicit declaration of function 'iomem_malloc'; did you mean 'rt_malloc'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:467:30: warning: implicit declaration of function 'iomem_malloc'; did you mean 'rt_malloc'? [-Wimplicit-function-declaration]
       model_data = (uint8_t *)iomem_malloc(KMODEL_SIZE);
                               ^~~~~~~~~~~~
                               rt_malloc
-kpu3/kpu3.c:466:19: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+kpu3/kpu3.c:467:19: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
       model_data = (uint8_t *)iomem_malloc(KMODEL_SIZE);
                    ^
 kpu3/kpu3.c: In function 'kpu_v3_stop':
-kpu3/kpu3.c:497:9: warning: implicit declaration of function 'iomem_free'; did you mean 'rt_free'? [-Wimplicit-function-declaration]
+kpu3/kpu3.c:498:9: warning: implicit declaration of function 'iomem_free'; did you mean 'rt_free'? [-Wimplicit-function-declaration]
          iomem_free(model_data);
          ^~~~~~~~~~
          rt_free
@@ -2792,7 +2792,7 @@ lcd_image_LVGL/board_config.h:4: warning: "OV5640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from lcd_image_LVGL/main.c:1:
-./rtconfig.h:198: note: this is the location of the previous definition
+./rtconfig.h:264: note: this is the location of the previous definition
  #define OV5640 1
  
 In file included from lcd_image_LVGL/main.c:13:
@@ -2801,7 +2801,7 @@ lcd_image_LVGL/board_config.h:5: warning: "OV2640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from lcd_image_LVGL/main.c:1:
-./rtconfig.h:197: note: this is the location of the previous definition
+./rtconfig.h:263: note: this is the location of the previous definition
  #define OV2640 0
  
 CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry.o
@@ -2897,5 +2897,5 @@ LINK rtthread.elf
 riscv-none-embed-objcopy -O binary rtthread.elf rtthread.bin
 riscv-none-embed-size rtthread.elf
    text	   data	    bss	    dec	    hex	filename
-1038158	   4440	1298113	2340711	 23b767	rtthread.elf
+1038158	   4440	1298081	2340679	 23b747	rtthread.elf
 scons: done building targets.
