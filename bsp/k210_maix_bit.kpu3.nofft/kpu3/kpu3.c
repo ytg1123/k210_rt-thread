@@ -9,6 +9,7 @@
 /* for K210 rt-theread */
 /* kpu code at 2022.03.27 by yoshito tagashira */
 
+
 #ifndef TRUE
 #define TRUE    1
 #endif
