@@ -1,0 +1,16 @@
+from building import *
+
+cwd     = GetCurrentDir()
+src     = Split('''
+''')
+CPPPATH = [cwd]
+
+if GetDepend('CAM_USING_OV2640'):
+    src += ['drv_ov2640.c']
+
+if GetDepend('CAM_USING_OV5640'):
+    src += ['drv_ov5640.c']
+
+group = DefineGroup('camera', src, depend = ['BSP_USING_CAMERA'], CPPPATH = CPPPATH)
+
+Return('group')
