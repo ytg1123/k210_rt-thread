@@ -2,7 +2,6 @@ h1. k210版Rt-Threadのビルド手順
 
 ![](/img/M-14471.jpg)
 
-
 <pre>
 ■ rt-thread git ソース入手先
 ※ PATH　https://github.com/ytg1123/k210_rt-thread  
