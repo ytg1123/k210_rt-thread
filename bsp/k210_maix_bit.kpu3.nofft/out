@@ -2897,5 +2897,5 @@ LINK rtthread.elf
 riscv-none-embed-objcopy -O binary rtthread.elf rtthread.bin
 riscv-none-embed-size rtthread.elf
    text	   data	    bss	    dec	    hex	filename
-1038158	   4440	1298081	2340679	 23b747	rtthread.elf
+1037944	   4440	1298041	2340425	 23b649	rtthread.elf
 scons: done building targets.

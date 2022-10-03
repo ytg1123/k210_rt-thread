@@ -501,7 +501,7 @@ void kpu_v3_stop(void)
 
         }
 }
-//INIT_APP_EXPORT(kpu_v3);
-MSH_CMD_EXPORT(kpu_v3,start kpu_v3 thread);
-MSH_CMD_EXPORT(kpu_v3_stop,stop kpu_v3 thread);
+INIT_APP_EXPORT(kpu_v3);
+//MSH_CMD_EXPORT(kpu_v3,start kpu_v3 thread);
+//MSH_CMD_EXPORT(kpu_v3_stop,stop kpu_v3 thread);
 
