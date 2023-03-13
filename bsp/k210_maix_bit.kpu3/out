@@ -9,23 +9,7 @@ driver/board.c: In function 'rt_hw_gt_maixpy':
 driver/board.c:146:22: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
      jump_to_maixpy = (void (*)(void)) jump_addr;
                       ^
-CC build/driver/camera/drv_ov5640.o
-driver/camera/drv_ov5640.c: In function 'hal_delay':
-driver/camera/drv_ov5640.c:26:5: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
-     usleep(delay * 1000);
-     ^~~~~~
-driver/camera/drv_ov5640.c: In function 'ov5640_init':
-driver/camera/drv_ov5640.c:49:9: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
-         printf("ID: %d \r\n", reg);
-         ^~~~~~
-driver/camera/drv_ov5640.c:49:9: warning: incompatible implicit declaration of built-in function 'printf'
-driver/camera/drv_ov5640.c:49:9: note: include '<stdio.h>' or provide a declaration of 'printf'
-driver/camera/drv_ov5640.c:23:1:
-+#include <stdio.h>
- 
-driver/camera/drv_ov5640.c:49:9:
-         printf("ID: %d \r\n", reg);
-         ^~~~~~
+CC build/driver/camera/drv_ov2640.o
 CC build/driver/drv_gpio.o
 driver/drv_gpio.c: In function 'drv_pin_attach_irq':
 driver/drv_gpio.c:202:5: warning: implicit declaration of function 'rt_hw_interrupt_install'; did you mean 'rt_hw_interrupt_init'? [-Wimplicit-function-declaration]
@@ -35,31 +19,14 @@ driver/drv_gpio.c:202:5: warning: implicit declaration of function 'rt_hw_interr
 CC build/driver/drv_interrupt.o
 CC build/driver/drv_io_config.o
 driver/drv_io_config.c: In function 'set_cpu_freq':
-driver/drv_io_config.c:119:5: warning: implicit declaration of function 'gpiohs_set_drive_mode'; did you mean 'fpioa_set_tie_value'? [-Wimplicit-function-declaration]
+driver/drv_io_config.c:127:5: warning: implicit declaration of function 'gpiohs_set_drive_mode'; did you mean 'fpioa_set_tie_value'? [-Wimplicit-function-declaration]
      gpiohs_set_drive_mode(CORE_VOLTAGE_GPIONUM, GPIO_DM_INPUT);
      ^~~~~~~~~~~~~~~~~~~~~
      fpioa_set_tie_value
-driver/drv_io_config.c:120:5: warning: implicit declaration of function 'gpiohs_set_pin'; did you mean 'fpioa_set_io'? [-Wimplicit-function-declaration]
+driver/drv_io_config.c:128:5: warning: implicit declaration of function 'gpiohs_set_pin'; did you mean 'fpioa_set_io'? [-Wimplicit-function-declaration]
      gpiohs_set_pin(CORE_VOLTAGE_GPIONUM, GPIO_PV_LOW);
      ^~~~~~~~~~~~~~
      fpioa_set_io
-driver/drv_io_config.c: In function 'init_cam':
-driver/drv_io_config.c:256:5: warning: implicit declaration of function 'ov5640_init'; did you mean 'dvp_init'? [-Wimplicit-function-declaration]
-     ov5640_init();
-     ^~~~~~~~~~~
-     dvp_init
-driver/drv_io_config.c:261:5: warning: implicit declaration of function 'OV5640_Light_Mode' [-Wimplicit-function-declaration]
-     OV5640_Light_Mode(2);      //set auto
-     ^~~~~~~~~~~~~~~~~
-driver/drv_io_config.c:262:5: warning: implicit declaration of function 'OV5640_Color_Saturation' [-Wimplicit-function-declaration]
-     OV5640_Color_Saturation(6); //default
-     ^~~~~~~~~~~~~~~~~~~~~~~
-driver/drv_io_config.c:263:5: warning: implicit declaration of function 'OV5640_Brightness' [-Wimplicit-function-declaration]
-     OV5640_Brightness(8);   //default
-     ^~~~~~~~~~~~~~~~~
-driver/drv_io_config.c:264:5: warning: implicit declaration of function 'OV5640_Contrast' [-Wimplicit-function-declaration]
-     OV5640_Contrast(3);     //default
-     ^~~~~~~~~~~~~~~
 CC build/driver/drv_lcd.o
 CC build/driver/drv_spi.o
 CC build/driver/drv_uart.o
@@ -78,24 +45,6 @@ driver/lcd.c:278:60: warning: cast to pointer from integer of different size [-W
    lcd_draw_picture(0,y,window_width,DRAW_NLINES,(uint32_t*)(void*)((((uint32_t)b)&0x0FFFFFFF)|0x80000000));
                                                             ^
 CC build/fft_lcd_MAiXBIT/main.o
-In file included from fft_lcd_MAiXBIT/main.c:32:
-fft_lcd_MAiXBIT/board_config.h:4: warning: "OV5640" redefined
- #define  OV5640             0
- 
-In file included from rt-thread/include/rtthread.h:22,
-                 from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:198: note: this is the location of the previous definition
- #define OV5640 1
- 
-In file included from fft_lcd_MAiXBIT/main.c:32:
-fft_lcd_MAiXBIT/board_config.h:5: warning: "OV2640" redefined
- #define  OV2640             1
- 
-In file included from rt-thread/include/rtthread.h:22,
-                 from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:197: note: this is the location of the previous definition
- #define OV2640 0
- 
 CC build/k210_mmd/esp32.o
 CXX build/k210_mmd/fvector2.o
 CXX build/k210_mmd/fvector3.o
@@ -2795,24 +2744,6 @@ In file included from lcd_image_LVGL/lv_widgets/../lv_core/lv_obj.h:19,
  #define false 0
  
 CC build/lcd_image_LVGL/main.o
-In file included from lcd_image_LVGL/main.c:13:
-lcd_image_LVGL/board_config.h:4: warning: "OV5640" redefined
- #define OV5640 0
- 
-In file included from rt-thread/include/rtthread.h:22,
-                 from lcd_image_LVGL/main.c:1:
-./rtconfig.h:198: note: this is the location of the previous definition
- #define OV5640 1
- 
-In file included from lcd_image_LVGL/main.c:13:
-lcd_image_LVGL/board_config.h:5: warning: "OV2640" redefined
- #define OV2640 1
- 
-In file included from rt-thread/include/rtthread.h:22,
-                 from lcd_image_LVGL/main.c:1:
-./rtconfig.h:197: note: this is the location of the previous definition
- #define OV2640 0
- 
 CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry.o
 CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry_user.o
 CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/locks.o
@@ -2906,5 +2837,5 @@ LINK rtthread.elf
 riscv-none-embed-objcopy -O binary rtthread.elf rtthread.bin
 riscv-none-embed-size rtthread.elf
    text	   data	    bss	    dec	    hex	filename
-1038030	   4440	 914105	1956575	 1ddadf	rtthread.elf
+1038846	   4440	 914057	1957343	 1ddddf	rtthread.elf
 scons: done building targets.

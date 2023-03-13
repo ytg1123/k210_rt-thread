@@ -16,6 +16,14 @@
 #include <math.h>
 #include <unistd.h>
 
+#ifdef CAM_USING_OV2640
+#include "drv_ov2640.h"
+#endif
+
+#ifdef CAM_USING_OV5640
+#include "drv_ov5640.h"
+#endif
+
 #include "dvp.h"
 #include "plic.h"
 #include "fpioa.h"

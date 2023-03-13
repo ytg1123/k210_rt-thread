@@ -150,8 +150,21 @@
 
 /* language packages */
 
+/* JSON: JavaScript Object Notation, a lightweight data-interchange format */
+
+
+/* XML: Extensible Markup Language */
+
 
 /* multimedia packages */
+
+/* LVGL: powerful and easy-to-use embedded GUI library */
+
+
+/* u8g2: a monochrome graphic library */
+
+
+/* PainterEngine: A cross-platform graphics application framework written in C language */
 
 
 /* tools packages */
@@ -159,17 +172,72 @@
 
 /* system packages */
 
+/* enhanced kernel services */
+
+
+/* acceleration: Assembly language or algorithmic acceleration packages */
+
+
+/* CMSIS: ARM Cortex-M Microcontroller Software Interface Standard */
+
+
+/* Micrium: Micrium software products porting for RT-Thread */
+
 
 /* peripheral libraries and drivers */
+
+
+/* Kendryte SDK */
 
 #define PKG_USING_KENDRYTE_SDK
 #define PKG_USING_KENDRYTE_SDK_V056
 #define PKG_KENDRYTE_SDK_VERNUM 0x0056
 
+/* AI packages */
+
+
 /* miscellaneous packages */
 
+/* project laboratory */
 
 /* samples: kernel and components samples */
+
+
+/* entertainment: terminal games and other interesting software packages */
+
+
+/* Arduino libraries */
+
+
+/* Projects */
+
+
+/* Sensors */
+
+
+/* Display */
+
+
+/* Timing */
+
+
+/* Data Processing */
+
+
+/* Data Storage */
+
+/* Communication */
+
+
+/* Device Control */
+
+
+/* Other */
+
+/* Signal IO */
+
+
+/* Uncategorized */
 
 #define BOARD_K210_EVB
 #define BSP_USING_MAIXBIT
@@ -186,16 +254,16 @@
 #define BSP_LCD_CS_PIN 36
 #define BSP_LCD_WR_PIN 39
 #define BSP_LCD_DC_PIN 38
-#define BSP_LCD_X_MAX 320
-#define BSP_LCD_Y_MAX 240
+#define BSP_LCD_X_MAX 240
+#define BSP_LCD_Y_MAX 320
 #define BD_TYPE_LICHEEDAN
 #define BOARD_KD233 0
 #define BOARD_LICHEEDAN 1
 #define BOARD_K61 0
 #define BSP_USING_CAMERA
-#define CAM_USING_OV5640
-#define OV2640 0
-#define OV5640 1
+#define CAM_USING_OV2640
+#define OV2640 1
+#define OV5640 0
 #define BSP_CAMERA_SCCB_SDA_PIN 40
 #define BSP_CAMERA_SCCB_SCLK_PIN 41
 #define BSP_CAMERA_CMOS_RST_PIN 42
@@ -204,6 +272,7 @@
 #define BSP_CAMERA_CMOS_XCLK_PIN 46
 #define BSP_CAMERA_CMOS_PCLK_PIN 47
 #define BSP_CAMERA_CMOS_HREF_PIN 45
+#define CAM_USING_EXAMPLE
 #define __STACKSIZE__ 4096
 
 #endif

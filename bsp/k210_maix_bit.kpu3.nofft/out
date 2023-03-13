@@ -84,7 +84,7 @@ fft_lcd_MAiXBIT/board_config.h:4: warning: "OV5640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:264: note: this is the location of the previous definition
+./rtconfig.h:266: note: this is the location of the previous definition
  #define OV5640 1
  
 In file included from fft_lcd_MAiXBIT/main.c:32:
@@ -93,7 +93,7 @@ fft_lcd_MAiXBIT/board_config.h:5: warning: "OV2640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from fft_lcd_MAiXBIT/main.c:15:
-./rtconfig.h:263: note: this is the location of the previous definition
+./rtconfig.h:265: note: this is the location of the previous definition
  #define OV2640 0
  
 CC build/k210_mmd/esp32.o
@@ -2792,7 +2792,7 @@ lcd_image_LVGL/board_config.h:4: warning: "OV5640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from lcd_image_LVGL/main.c:1:
-./rtconfig.h:264: note: this is the location of the previous definition
+./rtconfig.h:266: note: this is the location of the previous definition
  #define OV5640 1
  
 In file included from lcd_image_LVGL/main.c:13:
@@ -2801,7 +2801,7 @@ lcd_image_LVGL/board_config.h:5: warning: "OV2640" redefined
  
 In file included from rt-thread/include/rtthread.h:22,
                  from lcd_image_LVGL/main.c:1:
-./rtconfig.h:263: note: this is the location of the previous definition
+./rtconfig.h:265: note: this is the location of the previous definition
  #define OV2640 0
  
 CC build/packages/kendryte-sdk-v0.5.6/kendryte-standalone-sdk/lib/bsp/entry.o
@@ -2897,5 +2897,5 @@ LINK rtthread.elf
 riscv-none-embed-objcopy -O binary rtthread.elf rtthread.bin
 riscv-none-embed-size rtthread.elf
    text	   data	    bss	    dec	    hex	filename
-1037944	   4440	1298041	2340425	 23b649	rtthread.elf
+1037942	   4440	1298089	2340471	 23b677	rtthread.elf
 scons: done building targets.
