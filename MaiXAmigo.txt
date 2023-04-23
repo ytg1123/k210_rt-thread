@@ -1,0 +1,550 @@
+Maix Amigoの液晶
+
+3.5インチ TFT LCDディスプレイ ILI9486/ILI9488 480x320 36ピン
+8080 MCUインターフェース
+
+ILI9486のデータシート: 
+https://github.com/AngainorDev/Maix-Amigo-Help/blob/main/Datasheets/Display_ILI9486/ILI9486-ILITEK.pdf
+
+以下にLCD用Driverソースがある
+https://github.com/sipeed/MaixPy/blob/8ddd9e5318a4c74cdd3056cfe98dd02a88bc5eeb/components/drivers/lcd/src/lcd_mcu.c#L97
+
+Maix Amigoの接続図: 
+https://dl.sipeed.com/fileList/MAIX/HDK/Sipeed-Amigo/2970/Maix_Amigo_2970(Schematic).pdf
+
+I/O電圧の設定
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V18);
+
+SPI0のプロトコル設定
+    fpioa_set_function(36 /* LCD_CS */, FUNC_SPI0_SS3);
+    fpioa_set_function(39 /* LCD_WR */, FUNC_SPI0_SCLK);
+    fpioa_set_function(38 /* LCD_DC */, FUNC_GPIOHS0 + DCX_GPIONUM /* 38 */);
+    fpioa_set_function(37 /* LCD_RST */, FUNC_GPIOHS0 + RST_GPIONUM /* 37 */);
+    sysctl_set_spi0_dvp_data(1);
+
+octalモードにして使う 
+
+    spi_init(0, SPI_WORK_MODE_0, SPI_FF_OCTAL, 8, 0)
+
+
+
+https://qiita.com/Lathe/items/75872f0c14b6fa9e0496#サンプルlcd
+
+
+
+void lcd_init(void)
+{
+    tft_hard_init();
+
+    //soft reset
+    tft_write_command(SOFTWARE_RESET);
+    usleep(100000);
+
+    //exit sleep
+    tft_write_command(SLEEP_OFF);
+    usleep(100000);
+
+    uint8_t t[15];
+    tft_write_command(0XF1); /* Unk */
+    t[0] = (0x36);
+    t[1] = (0x04);
+    t[2] = (0x00);
+    t[3] = (0x3C);
+    t[4] = (0X0F);
+    t[5] = (0x8F);
+    tft_write_byte(t, 6);
+
+    tft_write_command(0XF2); /* Unk */
+    t[0] = (0x18);
+    t[1] = (0xA3);
+    t[2] = (0x12);
+    t[3] = (0x02);
+    t[4] = (0XB2);
+    t[5] = (0x12);
+    t[6] = (0xFF);
+    t[7] = (0x10);
+    t[8] = (0x00);
+    tft_write_byte(t, 9);
+
+    tft_write_command(0XF8); /* Unk */
+    t[0] = (0x21);
+    t[1] = (0x04);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0XF9); /* Unk */
+    t[0] = (0x00);
+    t[1] = (0x08);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0x36); /* Memory Access Control */
+    t[0] = (0x28);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xB4); /* Display Inversion Control */
+    t[0] = (0x00);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xC1); /* Power Control 2 */
+    t[0] = (0x41);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xC5); /* Vcom Control */
+    t[0] = (0x00);
+    t[1] = (0x18);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0xE0); /* Positive Gamma Control */
+    t[0] = (0x0F);
+    t[1] = (0x1F);
+    t[2] = (0x1C);
+    t[3] = (0x0C);
+    t[4] = (0x0F);
+    t[5] = (0x08);
+    t[6] = (0x48);
+    t[7] = (0x98);
+    t[8] = (0x37);
+    t[9] = (0x0A);
+    t[10] = (0x13);
+    t[11] = (0x04);
+    t[12] = (0x11);
+    t[13] = (0x0D);
+    t[14] = (0x00);
+    tft_write_byte(t, 15);
+
+    tft_write_command(0xE1); /* Negative Gamma Control */
+    t[0] = (0x0F);
+    t[1] = (0x32);
+    t[2] = (0x2E);
+    t[3] = (0x0B);
+    t[4] = (0x0D);
+    t[5] = (0x05);
+    t[6] = (0x47);
+    t[7] = (0x75);
+    t[8] = (0x37);
+    t[9] = (0x06);
+    t[10] = (0x10);
+    t[11] = (0x03);
+    t[12] = (0x24);
+    t[13] = (0x20);
+    t[14] = (0x00);
+    tft_write_byte(t, 15);
+
+    tft_write_command(0x3A); /* Interface Pixel Format */
+    t[0] = (0x55);  //RGB565
+    tft_write_byte(t, 1);
+    /*display on*/
+    tft_write_command(DISPALY_ON);
+    lcd_polling_enable();
+
+}
+
+
+/* Copyright 2018 Canaan Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#include <stdio.h>
+#include "fpioa.h"
+#include "lcd.h"
+#include "sysctl.h"
+#include "nt35310.h"
+#include "board_config.h"
+
+uint32_t g_lcd_gram[LCD_X_MAX * LCD_Y_MAX / 2] __attribute__((aligned(128)));  //画像保持用配列
+
+static void io_set_power(void)
+{
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V18);
+}
+
+static void io_mux_init(void)
+{
+    fpioa_set_function(38, FUNC_GPIOHS0 + DCX_GPIONUM);
+    fpioa_set_function(36, FUNC_SPI0_SS3);
+    fpioa_set_function(39, FUNC_SPI0_SCLK);
+    fpioa_set_function(37, FUNC_GPIOHS0 + RST_GPIONUM);
+    sysctl_set_spi0_dvp_data(1);
+}
+
+int main(void)
+{
+    printf("lcd test\n");
+    io_mux_init();
+    io_set_power();
+    lcd_init();
+    lcd_set_direction(DIR_XY_LRUD);  //画面方向をLRUDに変更（上下鏡像）
+
+    lcd_clear(RED);  //全画面を赤でクリア
+    lcd_draw_picture(0, 0, 240, 160, g_lcd_gram);  //画像描画
+    lcd_draw_string(16, 40, "Canaan", RED);  //文字描画
+    lcd_draw_string(16, 80, "Kendryte K210", BLUE);
+    while (1);
+}
+
+#include <stdio.h>
+#include <timer.h>
+#include <pwm.h>
+#include <plic.h>
+#include <sysctl.h>
+#include <fpioa.h>
+
+float duty = 1.0;
+
+void timerFunc(void){
+    duty -= 0.01;
+    if (duty <= 0.3) duty = 1;
+    pwm_set_frequency(PWM_DEVICE_0, PWM_CHANNEL_0, 20000, duty);  //duty比を変更
+}
+
+int main(void)
+{
+    fpioa_set_function(32, FUNC_TIMER0_TOGGLE1);  //LED_W[pin32]をPWMのデバイス0・チャネル0に設定
+    plic_init();
+    pwm_init(PWM_DEVICE_0);
+    pwm_set_frequency(PWM_DEVICE_0, PWM_CHANNEL_0, 20000, duty);
+    pwm_set_enable(PWM_DEVICE_0, PWM_CHANNEL_0, 1);
+
+    timer_init(TIMER_DEVICE_1);  //タイマ1を初期化
+    timer_set_interval(TIMER_DEVICE_1, TIMER_CHANNEL_2, 50000000);  //タイマ1のチャネル2をインターバル50msecに設定
+    timer_set_irq(TIMER_DEVICE_1, TIMER_CHANNEL_2, timerFunc, 1);
+    timer_set_enable(TIMER_DEVICE_1, TIMER_CHANNEL_2, 1);
+    sysctl_enable_irq();
+
+    while(1){}
+}
+
+#include <stdio.h>
+#include <unistd.h>
+#include "fpioa.h"
+#include "gpiohs.h"
+#include "bsp.h"
+#include "plic.h"
+#include "sysctl.h"
+
+int8_t key1IRQ = 0;
+int8_t key2IRQ = 0;
+
+void key1_onchange_isr(void){
+    key1IRQ = 1;
+}
+
+void key2_onchange_isr(void){
+    key2IRQ = 1;
+}
+
+int main(void){
+    fpioa_set_function(20, FUNC_GPIOHS3);
+    fpioa_set_function(23, FUNC_GPIOHS4);
+
+    gpiohs_set_drive_mode(3, GPIO_DM_INPUT);
+    gpiohs_set_drive_mode(4, GPIO_DM_INPUT);
+
+    gpiohs_set_pin_edge(3, GPIO_PE_FALLING);  //立下りエッジで割り込み
+    gpiohs_set_pin_edge(4, GPIO_PE_FALLING);
+
+    plic_init ();
+    gpiohs_irq_register(3, 1, key1_onchange_isr, NULL);  //割り込みハンドラとプライオリティを登録
+    gpiohs_irq_register(4, 3, key2_onchange_isr, NULL);
+
+    sysctl_enable_irq ();
+
+     while (1){
+        if(key1IRQ){
+            printf("key1 is pressed\n");
+            key1IRQ = 0;
+        }
+        if(key2IRQ){
+            printf("key2 is pressed\n");
+            key2IRQ = 0;
+        }
+    }
+    return 0;
+}
+
+#include <stdio.h>
+#include <unistd.h>
+#include "fpioa.h"
+#include "gpio.h"
+#include "bsp.h"
+
+int main(void)
+{
+    fpioa_set_function(20, FUNC_GPIO3);
+    fpioa_set_function(23, FUNC_GPIO4);
+
+    gpio_init();
+    gpio_set_drive_mode(3, GPIO_DM_INPUT);  //FUNC＿GPIO3を入力に設定
+    gpio_set_drive_mode(4, GPIO_DM_INPUT);
+
+    int8_t key1,key2;
+    while (1){
+        sleep(1);
+
+        key1 = gpio_get_pin(3);  //ピンの値を読み取り
+        key2 = gpio_get_pin(4);
+        printf("key1: %d    key2: %d\n", key1, key2);
+    }
+    return 0;
+}
+
+#include <stdio.h>
+#include "fpioa.h"
+#include "uart.h"
+#include "gpio.h"
+#include "sysctl.h"
+
+#define UART_NUM    UART_DEVICE_1
+
+int8_t sideLED_State = 1;  //インジケータ用LEDのON/OFF状態
+
+void io_mux_init(void)
+{
+    fpioa_set_function(4, FUNC_UART1_RX + UART_NUM * 2);  //物理4番ピンをUART1RXに設定
+    fpioa_set_function(5, FUNC_UART1_TX + UART_NUM * 2);
+    fpioa_set_function(15, FUNC_GPIO7);  //サイドLED[物理pin15]をインジケータLED[論理7番]として使う
+}
+
+int main()
+{
+    io_mux_init();
+    plic_init();
+    sysctl_enable_irq();
+
+    gpio_set_drive_mode(7, GPIO_DM_OUTPUT);  //インジケータ用LED設定
+    gpio_set_pin(7, GPIO_PV_LOW);  //インジケータLED　ON
+
+    uart_init(UART_NUM);  //UART初期化
+    uart_config(UART_NUM, 115200, UART_BITWIDTH_8BIT, UART_STOP_1, UART_PARITY_NONE);  //UART設定[this method is diprecated, use uart_configure()]
+
+    char *mess = {"Interface\n"};
+    uart_send_data(UART_NUM, mess, strlen(mess));  //UARTにメッセージ出力
+
+    char rec = 0;
+    while (1)
+    {
+        while(uart_receive_data(UART_NUM, &rec, 1))
+        {
+            sideLED_State = !sideLED_State;  //インジケータLED反転
+            gpio_set_pin(7, sideLED_State);
+            uart_send_data(UART_NUM, &rec, 1);  //入力された文字をバック
+        }
+    }
+
+}
+
+#include <stdio.h>
+#include "fpioa.h"
+#include "sysctl.h"
+#include "board_config.h"
+#include "gpio.h"
+#include "timer.h"
+#include <unistd.h>
+#include "bsp.h"
+
+int8_t ledState = 0; //state of LED, ON/OFF
+
+int main(void)
+{
+    gpio_init();
+    fpioa_set_function(32, FUNC_GPIO3);  //物理32番ピンを論理3番に割り当て
+    gpio_set_drive_mode(3,GPIO_DM_OUTPUT);  //3番ピンを出力に設定
+
+    while(1){
+        ledState = !ledState;
+        gpio_set_pin(3, ledState);
+        sleep(1);  //bsp.h is needed
+    }
+}
+
+/* Copyright 2018 Canaan Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#include <stdio.h>
+#include "fpioa.h"
+#include "lcd.h"
+#include "sysctl.h"
+#include "nt35310.h"
+#include "board_config.h"
+
+uint32_t g_lcd_gram[LCD_X_MAX * LCD_Y_MAX / 2] __attribute__((aligned(128)));  //画像保持用配列
+
+static void io_set_power(void)
+{
+    sysctl_set_power_mode(SYSCTL_POWER_BANK6, SYSCTL_POWER_V18);
+    sysctl_set_power_mode(SYSCTL_POWER_BANK7, SYSCTL_POWER_V18);
+}
+
+static void io_mux_init(void)
+{
+    fpioa_set_function(38, FUNC_GPIOHS0 + DCX_GPIONUM);
+    fpioa_set_function(36, FUNC_SPI0_SS3);
+    fpioa_set_function(39, FUNC_SPI0_SCLK);
+    fpioa_set_function(37, FUNC_GPIOHS0 + RST_GPIONUM);
+    sysctl_set_spi0_dvp_data(1);
+}
+
+int main(void)
+{
+    printf("lcd test\n");
+    io_mux_init();
+    io_set_power();
+    lcd_init();
+    lcd_set_direction(DIR_XY_LRUD);  //画面方向をLRUDに変更（上下鏡像）
+
+    lcd_clear(RED);  //全画面を赤でクリア
+    lcd_draw_picture(0, 0, 240, 160, g_lcd_gram);  //画像描画
+    lcd_draw_string(16, 40, "Canaan", RED);  //文字描画
+    lcd_draw_string(16, 80, "Kendryte K210", BLUE);
+    while (1);
+}
+
+
+void lcd_init(void)
+{
+    tft_hard_init();
+
+    //soft reset
+    tft_write_command(SOFTWARE_RESET);
+    usleep(100000);
+
+    //exit sleep
+    tft_write_command(SLEEP_OFF);
+    usleep(100000);
+
+    uint8_t t[15];
+    tft_write_command(0XF1); /* Unk */
+    t[0] = (0x36);
+    t[1] = (0x04);
+    t[2] = (0x00);
+    t[3] = (0x3C);
+    t[4] = (0X0F);
+    t[5] = (0x8F);
+    tft_write_byte(t, 6);
+
+    tft_write_command(0XF2); /* Unk */
+    t[0] = (0x18);
+    t[1] = (0xA3);
+    t[2] = (0x12);
+    t[3] = (0x02);
+    t[4] = (0XB2);
+    t[5] = (0x12);
+    t[6] = (0xFF);
+    t[7] = (0x10);
+    t[8] = (0x00);
+    tft_write_byte(t, 9);
+
+    tft_write_command(0XF8); /* Unk */
+    t[0] = (0x21);
+    t[1] = (0x04);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0XF9); /* Unk */
+    t[0] = (0x00);
+    t[1] = (0x08);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0x36); /* Memory Access Control */
+    t[0] = (0x28);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xB4); /* Display Inversion Control */
+    t[0] = (0x00);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xC1); /* Power Control 2 */
+    t[0] = (0x41);
+    tft_write_byte(t, 1);
+
+    tft_write_command(0xC5); /* Vcom Control */
+    t[0] = (0x00);
+    t[1] = (0x18);
+    tft_write_byte(t, 2);
+
+    tft_write_command(0xE0); /* Positive Gamma Control */
+    t[0] = (0x0F);
+    t[1] = (0x1F);
+    t[2] = (0x1C);
+    t[3] = (0x0C);
+    t[4] = (0x0F);
+    t[5] = (0x08);
+    t[6] = (0x48);
+    t[7] = (0x98);
+    t[8] = (0x37);
+    t[9] = (0x0A);
+    t[10] = (0x13);
+    t[11] = (0x04);
+    t[12] = (0x11);
+    t[13] = (0x0D);
+    t[14] = (0x00);
+    tft_write_byte(t, 15);
+
+    tft_write_command(0xE1); /* Negative Gamma Control */
+    t[0] = (0x0F);
+    t[1] = (0x32);
+    t[2] = (0x2E);
+    t[3] = (0x0B);
+    t[4] = (0x0D);
+    t[5] = (0x05);
+    t[6] = (0x47);
+    t[7] = (0x75);
+    t[8] = (0x37);
+    t[9] = (0x06);
+    t[10] = (0x10);
+    t[11] = (0x03);
+    t[12] = (0x24);
+    t[13] = (0x20);
+    t[14] = (0x00);
+    tft_write_byte(t, 15);
+
+    tft_write_command(0x3A); /* Interface Pixel Format */
+    t[0] = (0x55);  //RGB565
+    tft_write_byte(t, 1);
+    /*display on*/
+    tft_write_command(DISPALY_ON);
+    lcd_polling_enable();
+
+}
+
+void io_mux_init(void)
+{
+    fpioa_set_function(11, FUNC_SPI0_SCLK);
+    fpioa_set_function(10, FUNC_SPI0_D0);
+    fpioa_set_function(6, FUNC_SPI0_D1);
+    fpioa_set_function(26, FUNC_GPIOHS7);
+
+    //fpioa_set_function(12, FUNC_SPI0_SS3);
+}
+
+void io_mux_init(void)
+{
+    fpioa_set_function(11, FUNC_SPI0_SCLK);
+    fpioa_set_function(10, FUNC_SPI0_D0);
+    fpioa_set_function(6, FUNC_SPI0_D1);
+    fpioa_set_function(26, FUNC_GPIOHS7);
+
+    //fpioa_set_function(12, FUNC_SPI0_SS3);
+}
+
